@@ -1,0 +1,63 @@
+Rubric - PA08
+
+Program Operations:  /5
+======================
+Program builds correctly, no errors or warnings: /3
+Program runs correctly:  /2
+
+Project functions:  /36
+=============================================
+
+clear Tree:  /2
+
+copyTree:  /2
+
+createNodeFromData:  /2
+
+createNodeFromNode:  /2
+{one line of code}
+
+displayInOrder:  /2
+{must show numbering with correct formatting}
+
+displayPostOrder:  /2
+{must show numbering with correct formatting}
+
+displayPreOrder:  /2
+{must show numbering with correct formatting}
+
+displaySelectionInOrder:  /2
+{must show numbering with correct formatting}
+
+findBalanceFactor:   /2
+
+getDataFromFile:  /2
+
+initializeTree:  /2
+
+insertNodeData:  /2
+{one line of code}
+
+insertRawData:  /2
+
+isEmpty:  /2
+
+rotateLeft:  /2
+
+rotateRight:  /2
+
+search:  /2
+
+universityDataToString:  /2
+{one line of code}
+
+All other specifications followed:  /4
+=====================================
+- correct file upload
+- correct method names, variable names, etc.
+- appropriate use of constant value
+
+General Usage Rubric reductions
+===============================
+see GUR document
+

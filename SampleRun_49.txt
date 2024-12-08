@@ -1,0 +1,1049 @@
+[NOTE: Graphic scrolls around on this sample]
+
+AVL Testing Program
+===================
+
+Uploading from file name: Universities_49.csv
+
+Begin Loading Data From File . . .
+    1) Name: Bennington College, City: Bennington, Rank: 635
+    2) Name: Gonzaga University, City: Spokane, Rank: 364
+  Identified: Right Right Case
+    - Rotating Left
+    3) Name: Hamilton College, City: Clinton, Rank: 338
+    4) Name: Samford University, City: Birmingham, Rank: 468
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+    5) Name: Robert Morris University, City: Moon Township, Rank: 883
+    6) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+    7) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+    8) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   Identified: Right Right Case
+     - Rotating Left
+    9) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+  Identified: Right Right Case
+    - Rotating Left
+   10) Name: Wabash College, City: Crawfordsville, Rank: 530
+    Identified: Right Left Case
+     - Rotating Right
+      - Rotating Left
+   11) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   12) Name: DeSales University, City: Center Valley, Rank: 804
+   Identified: Right Right Case
+     - Rotating Left
+   13) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   14) Name: Marquette University, City: Milwaukee, Rank: 139
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: University of Delaware, City: Newark, Rank: 82
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   17) Name: Winona State University, City: Winona, Rank: 691
+   18) Name: Bluefield University, City: Bluefield, Rank: 1305
+   19) Name: Defiance College, City: Defiance, Rank: 1346
+   20) Name: University of San Diego, City: San Diego, Rank: 222
+   21) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   22) Name: Whitman College, City: Walla Walla, Rank: 473
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   23) Name: University of Idaho, City: Moscow, Rank: 157
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   24) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   25) Name: Bay State College, City: Boston, Rank: 1571
+  Identified: Right Right Case
+    - Rotating Left
+   26) Name: Lamar University, City: Beaumont, Rank: 332
+   27) Name: St John's College, City: Annapolis, Rank: 1009
+   28) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+  Identified: Left Left Case
+    - Rotating Right
+   29) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   Identified: Left Left Case
+     - Rotating Right
+   30) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+  Identified: Left Right Case
+   - Rotating Left
+    - Rotating Right
+   31) Name: The University of Olivet, City: Olivet, Rank: 1505
+   32) Name: Methodist College, City: Peoria, Rank: 1718
+   33) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   34) Name: Husson University, City: Bangor, Rank: 969
+  Identified: Left Right Case
+   - Rotating Left
+    - Rotating Right
+   35) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   36) Name: Arizona Christian University, City: Glendale, Rank: 1368
+   37) Name: Wofford College, City: Spartanburg, Rank: 690
+  Identified: Left Left Case
+    - Rotating Right
+   38) Name: Antioch University Seattle, City: Seattle, Rank: -1
+   Identified: Right Left Case
+    - Rotating Right
+     - Rotating Left
+   39) Name: The Catholic University of America, City: Washington, Rank: 220
+   40) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   Identified: Left Left Case
+     - Rotating Right
+   41) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    Identified: Left Right Case
+     - Rotating Left
+      - Rotating Right
+   42) Name: Daemen University, City: Amherst, Rank: 1010
+   Identified: Right Right Case
+     - Rotating Left
+   43) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   45) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+  Identified: Left Right Case
+   - Rotating Left
+    - Rotating Right
+   46) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+  Identified: Left Left Case
+    - Rotating Right
+   47) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   48) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   49) Name: Meredith College, City: Raleigh, Rank: 783
+                                  . . . End Loading Data From File
+
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: f
+
+Find Item Module
+Enter segment of university name: Anti
+University found: Name: Antioch University Seattle, City: Seattle, Rank: -1
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: c
+
+Copy Tree Module
+
+Original Tree Displayed:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    4) Name: Bay State College, City: Boston, Rank: 1571
+    5) Name: Bennington College, City: Bennington, Rank: 635
+    6) Name: Bluefield University, City: Bluefield, Rank: 1305
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Daemen University, City: Amherst, Rank: 1010
+    9) Name: DeSales University, City: Center Valley, Rank: 804
+   10) Name: Defiance College, City: Defiance, Rank: 1346
+   11) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   12) Name: Gonzaga University, City: Spokane, Rank: 364
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Husson University, City: Bangor, Rank: 969
+   17) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   18) Name: Lamar University, City: Beaumont, Rank: 332
+   19) Name: Marquette University, City: Milwaukee, Rank: 139
+   20) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Meredith College, City: Raleigh, Rank: 783
+   23) Name: Methodist College, City: Peoria, Rank: 1718
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Robert Morris University, City: Moon Township, Rank: 883
+   28) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   31) Name: St John's College, City: Annapolis, Rank: 1009
+   32) Name: The Catholic University of America, City: Washington, Rank: 220
+   33) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: University of Delaware, City: Newark, Rank: 82
+   36) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   37) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   42) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   45) Name: Wabash College, City: Crawfordsville, Rank: 530
+   46) Name: Whitman College, City: Walla Walla, Rank: 473
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+
+
+Copied Tree Displayed:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    4) Name: Bay State College, City: Boston, Rank: 1571
+    5) Name: Bennington College, City: Bennington, Rank: 635
+    6) Name: Bluefield University, City: Bluefield, Rank: 1305
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Daemen University, City: Amherst, Rank: 1010
+    9) Name: DeSales University, City: Center Valley, Rank: 804
+   10) Name: Defiance College, City: Defiance, Rank: 1346
+   11) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   12) Name: Gonzaga University, City: Spokane, Rank: 364
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Husson University, City: Bangor, Rank: 969
+   17) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   18) Name: Lamar University, City: Beaumont, Rank: 332
+   19) Name: Marquette University, City: Milwaukee, Rank: 139
+   20) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Meredith College, City: Raleigh, Rank: 783
+   23) Name: Methodist College, City: Peoria, Rank: 1718
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Robert Morris University, City: Moon Township, Rank: 883
+   28) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   31) Name: St John's College, City: Annapolis, Rank: 1009
+   32) Name: The Catholic University of America, City: Washington, Rank: 220
+   33) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: University of Delaware, City: Newark, Rank: 82
+   36) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   37) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   42) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   45) Name: Wabash College, City: Crawfordsville, Rank: 530
+   46) Name: Whitman College, City: Walla Walla, Rank: 473
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: i
+
+Display in order:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    4) Name: Bay State College, City: Boston, Rank: 1571
+    5) Name: Bennington College, City: Bennington, Rank: 635
+    6) Name: Bluefield University, City: Bluefield, Rank: 1305
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Daemen University, City: Amherst, Rank: 1010
+    9) Name: DeSales University, City: Center Valley, Rank: 804
+   10) Name: Defiance College, City: Defiance, Rank: 1346
+   11) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   12) Name: Gonzaga University, City: Spokane, Rank: 364
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Husson University, City: Bangor, Rank: 969
+   17) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   18) Name: Lamar University, City: Beaumont, Rank: 332
+   19) Name: Marquette University, City: Milwaukee, Rank: 139
+   20) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Meredith College, City: Raleigh, Rank: 783
+   23) Name: Methodist College, City: Peoria, Rank: 1718
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Robert Morris University, City: Moon Township, Rank: 883
+   28) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   31) Name: St John's College, City: Annapolis, Rank: 1009
+   32) Name: The Catholic University of America, City: Washington, Rank: 220
+   33) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: University of Delaware, City: Newark, Rank: 82
+   36) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   37) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   42) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   45) Name: Wabash College, City: Crawfordsville, Rank: 530
+   46) Name: Whitman College, City: Walla Walla, Rank: 473
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: t
+
+Display post order:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Bay State College, City: Boston, Rank: 1571
+    4) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    5) Name: Bluefield University, City: Bluefield, Rank: 1305
+    6) Name: Daemen University, City: Amherst, Rank: 1010
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Defiance College, City: Defiance, Rank: 1346
+    9) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   10) Name: DeSales University, City: Center Valley, Rank: 804
+   11) Name: Bennington College, City: Bennington, Rank: 635
+   12) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Husson University, City: Bangor, Rank: 969
+   15) Name: Lamar University, City: Beaumont, Rank: 332
+   16) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   17) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   18) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   19) Name: Meredith College, City: Raleigh, Rank: 783
+   20) Name: Methodist College, City: Peoria, Rank: 1718
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   23) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Marquette University, City: Milwaukee, Rank: 139
+   26) Name: Gonzaga University, City: Spokane, Rank: 364
+   27) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   28) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   31) Name: The Catholic University of America, City: Washington, Rank: 220
+   32) Name: University of Delaware, City: Newark, Rank: 82
+   33) Name: The University of Olivet, City: Olivet, Rank: 1505
+   34) Name: St John's College, City: Annapolis, Rank: 1009
+   35) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   36) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   37) Name: University of San Diego, City: San Diego, Rank: 222
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   40) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   41) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   42) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   43) Name: Whitman College, City: Walla Walla, Rank: 473
+   44) Name: Wofford College, City: Spartanburg, Rank: 690
+   45) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   46) Name: Winona State University, City: Winona, Rank: 691
+   47) Name: Wabash College, City: Crawfordsville, Rank: 530
+   48) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   49) Name: Robert Morris University, City: Moon Township, Rank: 883
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: e
+
+Display pre order:
+    1) Name: Robert Morris University, City: Moon Township, Rank: 883
+    2) Name: Gonzaga University, City: Spokane, Rank: 364
+    3) Name: Bennington College, City: Bennington, Rank: 635
+    4) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    5) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    6) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    7) Name: Bay State College, City: Boston, Rank: 1571
+    8) Name: DeSales University, City: Center Valley, Rank: 804
+    9) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+   10) Name: Bluefield University, City: Bluefield, Rank: 1305
+   11) Name: Daemen University, City: Amherst, Rank: 1010
+   12) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   13) Name: Defiance College, City: Defiance, Rank: 1346
+   14) Name: Marquette University, City: Milwaukee, Rank: 139
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Hamilton College, City: Clinton, Rank: 338
+   17) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   18) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   19) Name: Husson University, City: Bangor, Rank: 969
+   20) Name: Lamar University, City: Beaumont, Rank: 332
+   21) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   22) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   23) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   24) Name: Methodist College, City: Peoria, Rank: 1718
+   25) Name: Meredith College, City: Raleigh, Rank: 783
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   28) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   29) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   30) Name: St John's College, City: Annapolis, Rank: 1009
+   31) Name: Samford University, City: Birmingham, Rank: 468
+   32) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   33) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: The Catholic University of America, City: Washington, Rank: 220
+   36) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   37) Name: University of Delaware, City: Newark, Rank: 82
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   42) Name: Wabash College, City: Crawfordsville, Rank: 530
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   45) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   46) Name: Winona State University, City: Winona, Rank: 691
+   47) Name: Whitman College, City: Walla Walla, Rank: 473
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: s
+
+Display University Selection Module
+Enter segment of university name: Univ
+
+Selected Data Displayed:
+6422124) Name: University of Delaware, City: Newark, Rank: 82
+6422124) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+6422124) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+6422124) Name: University of Idaho, City: Moscow, Rank: 157
+6422124) Name: University of Montevallo, City: Montevallo, Rank: 1110
+6422124) Name: University of San Diego, City: San Diego, Rank: 222
+6422124) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+6422124) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+6422124) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: p
+
+End Program
+
+C:\Users\Michael L\Documents\Docs_2021\Educator\Current\CS_249_Spg24\Projects\PA08>Test08
+
+AVL Testing Program
+===================
+
+Uploading from file name: Universities_49.csv
+
+Begin Loading Data From File . . .
+    1) Name: Bennington College, City: Bennington, Rank: 635
+    2) Name: Gonzaga University, City: Spokane, Rank: 364
+  Identified: Right Right Case
+    - Rotating Left
+    3) Name: Hamilton College, City: Clinton, Rank: 338
+    4) Name: Samford University, City: Birmingham, Rank: 468
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+    5) Name: Robert Morris University, City: Moon Township, Rank: 883
+    6) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+    7) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+    8) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   Identified: Right Right Case
+     - Rotating Left
+    9) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+  Identified: Right Right Case
+    - Rotating Left
+   10) Name: Wabash College, City: Crawfordsville, Rank: 530
+    Identified: Right Left Case
+     - Rotating Right
+      - Rotating Left
+   11) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   12) Name: DeSales University, City: Center Valley, Rank: 804
+   Identified: Right Right Case
+     - Rotating Left
+   13) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   14) Name: Marquette University, City: Milwaukee, Rank: 139
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: University of Delaware, City: Newark, Rank: 82
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   17) Name: Winona State University, City: Winona, Rank: 691
+   18) Name: Bluefield University, City: Bluefield, Rank: 1305
+   19) Name: Defiance College, City: Defiance, Rank: 1346
+   20) Name: University of San Diego, City: San Diego, Rank: 222
+   21) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   22) Name: Whitman College, City: Walla Walla, Rank: 473
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   23) Name: University of Idaho, City: Moscow, Rank: 157
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   24) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   25) Name: Bay State College, City: Boston, Rank: 1571
+  Identified: Right Right Case
+    - Rotating Left
+   26) Name: Lamar University, City: Beaumont, Rank: 332
+   27) Name: St John's College, City: Annapolis, Rank: 1009
+   28) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+  Identified: Left Left Case
+    - Rotating Right
+   29) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   Identified: Left Left Case
+     - Rotating Right
+   30) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+  Identified: Left Right Case
+   - Rotating Left
+    - Rotating Right
+   31) Name: The University of Olivet, City: Olivet, Rank: 1505
+   32) Name: Methodist College, City: Peoria, Rank: 1718
+   33) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   34) Name: Husson University, City: Bangor, Rank: 969
+  Identified: Left Right Case
+   - Rotating Left
+    - Rotating Right
+   35) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   36) Name: Arizona Christian University, City: Glendale, Rank: 1368
+   37) Name: Wofford College, City: Spartanburg, Rank: 690
+  Identified: Left Left Case
+    - Rotating Right
+   38) Name: Antioch University Seattle, City: Seattle, Rank: -1
+   Identified: Right Left Case
+    - Rotating Right
+     - Rotating Left
+   39) Name: The Catholic University of America, City: Washington, Rank: 220
+   40) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   Identified: Left Left Case
+     - Rotating Right
+   41) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    Identified: Left Right Case
+     - Rotating Left
+      - Rotating Right
+   42) Name: Daemen University, City: Amherst, Rank: 1010
+   Identified: Right Right Case
+     - Rotating Left
+   43) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+  Identified: Right Left Case
+   - Rotating Right
+    - Rotating Left
+   45) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+  Identified: Left Right Case
+   - Rotating Left
+    - Rotating Right
+   46) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+  Identified: Left Left Case
+    - Rotating Right
+   47) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   48) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   49) Name: Meredith College, City: Raleigh, Rank: 783
+                                  . . . End Loading Data From File
+
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: a
+
+Add Item Module
+Enter university name: Zarathustra Medical School
+Enter university city: Munchen
+Enter rank: 2001
+  Identified: Right Right Case
+    - Rotating Left
+
+University Zarathustra Medical School added to BST
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: f
+
+Find Item Module
+Enter segment of university name: John
+University found: Name: Johns Hopkins University, City: Baltimore, Rank: 17
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: c
+
+Copy Tree Module
+
+Original Tree Displayed:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    4) Name: Bay State College, City: Boston, Rank: 1571
+    5) Name: Bennington College, City: Bennington, Rank: 635
+    6) Name: Bluefield University, City: Bluefield, Rank: 1305
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Daemen University, City: Amherst, Rank: 1010
+    9) Name: DeSales University, City: Center Valley, Rank: 804
+   10) Name: Defiance College, City: Defiance, Rank: 1346
+   11) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   12) Name: Gonzaga University, City: Spokane, Rank: 364
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Husson University, City: Bangor, Rank: 969
+   17) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   18) Name: Lamar University, City: Beaumont, Rank: 332
+   19) Name: Marquette University, City: Milwaukee, Rank: 139
+   20) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Meredith College, City: Raleigh, Rank: 783
+   23) Name: Methodist College, City: Peoria, Rank: 1718
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Robert Morris University, City: Moon Township, Rank: 883
+   28) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   31) Name: St John's College, City: Annapolis, Rank: 1009
+   32) Name: The Catholic University of America, City: Washington, Rank: 220
+   33) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: University of Delaware, City: Newark, Rank: 82
+   36) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   37) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   42) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   45) Name: Wabash College, City: Crawfordsville, Rank: 530
+   46) Name: Whitman College, City: Walla Walla, Rank: 473
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+   50) Name: Zarathustra Medical School, City: Munchen, Rank: 2001
+
+
+Copied Tree Displayed:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    4) Name: Bay State College, City: Boston, Rank: 1571
+    5) Name: Bennington College, City: Bennington, Rank: 635
+    6) Name: Bluefield University, City: Bluefield, Rank: 1305
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Daemen University, City: Amherst, Rank: 1010
+    9) Name: DeSales University, City: Center Valley, Rank: 804
+   10) Name: Defiance College, City: Defiance, Rank: 1346
+   11) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   12) Name: Gonzaga University, City: Spokane, Rank: 364
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Husson University, City: Bangor, Rank: 969
+   17) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   18) Name: Lamar University, City: Beaumont, Rank: 332
+   19) Name: Marquette University, City: Milwaukee, Rank: 139
+   20) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Meredith College, City: Raleigh, Rank: 783
+   23) Name: Methodist College, City: Peoria, Rank: 1718
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Robert Morris University, City: Moon Township, Rank: 883
+   28) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   31) Name: St John's College, City: Annapolis, Rank: 1009
+   32) Name: The Catholic University of America, City: Washington, Rank: 220
+   33) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: University of Delaware, City: Newark, Rank: 82
+   36) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   37) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   42) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   45) Name: Wabash College, City: Crawfordsville, Rank: 530
+   46) Name: Whitman College, City: Walla Walla, Rank: 473
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+   50) Name: Zarathustra Medical School, City: Munchen, Rank: 2001
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: i
+
+Display in order:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    4) Name: Bay State College, City: Boston, Rank: 1571
+    5) Name: Bennington College, City: Bennington, Rank: 635
+    6) Name: Bluefield University, City: Bluefield, Rank: 1305
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Daemen University, City: Amherst, Rank: 1010
+    9) Name: DeSales University, City: Center Valley, Rank: 804
+   10) Name: Defiance College, City: Defiance, Rank: 1346
+   11) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   12) Name: Gonzaga University, City: Spokane, Rank: 364
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Husson University, City: Bangor, Rank: 969
+   17) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   18) Name: Lamar University, City: Beaumont, Rank: 332
+   19) Name: Marquette University, City: Milwaukee, Rank: 139
+   20) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Meredith College, City: Raleigh, Rank: 783
+   23) Name: Methodist College, City: Peoria, Rank: 1718
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Robert Morris University, City: Moon Township, Rank: 883
+   28) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   31) Name: St John's College, City: Annapolis, Rank: 1009
+   32) Name: The Catholic University of America, City: Washington, Rank: 220
+   33) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: University of Delaware, City: Newark, Rank: 82
+   36) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   37) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   42) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   45) Name: Wabash College, City: Crawfordsville, Rank: 530
+   46) Name: Whitman College, City: Walla Walla, Rank: 473
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   49) Name: Wofford College, City: Spartanburg, Rank: 690
+   50) Name: Zarathustra Medical School, City: Munchen, Rank: 2001
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: t
+
+Display post order:
+    1) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    2) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    3) Name: Bay State College, City: Boston, Rank: 1571
+    4) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    5) Name: Bluefield University, City: Bluefield, Rank: 1305
+    6) Name: Daemen University, City: Amherst, Rank: 1010
+    7) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+    8) Name: Defiance College, City: Defiance, Rank: 1346
+    9) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   10) Name: DeSales University, City: Center Valley, Rank: 804
+   11) Name: Bennington College, City: Bennington, Rank: 635
+   12) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   13) Name: Hamilton College, City: Clinton, Rank: 338
+   14) Name: Husson University, City: Bangor, Rank: 969
+   15) Name: Lamar University, City: Beaumont, Rank: 332
+   16) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   17) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   18) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   19) Name: Meredith College, City: Raleigh, Rank: 783
+   20) Name: Methodist College, City: Peoria, Rank: 1718
+   21) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   22) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   23) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   24) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   25) Name: Marquette University, City: Milwaukee, Rank: 139
+   26) Name: Gonzaga University, City: Spokane, Rank: 364
+   27) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   28) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   29) Name: Samford University, City: Birmingham, Rank: 468
+   30) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   31) Name: The Catholic University of America, City: Washington, Rank: 220
+   32) Name: University of Delaware, City: Newark, Rank: 82
+   33) Name: The University of Olivet, City: Olivet, Rank: 1505
+   34) Name: St John's College, City: Annapolis, Rank: 1009
+   35) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   36) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   37) Name: University of San Diego, City: San Diego, Rank: 222
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   40) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   41) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   42) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   43) Name: Whitman College, City: Walla Walla, Rank: 473
+   44) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   45) Name: Zarathustra Medical School, City: Munchen, Rank: 2001
+   46) Name: Wofford College, City: Spartanburg, Rank: 690
+   47) Name: Winona State University, City: Winona, Rank: 691
+   48) Name: Wabash College, City: Crawfordsville, Rank: 530
+   49) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   50) Name: Robert Morris University, City: Moon Township, Rank: 883
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: e
+
+Display pre order:
+    1) Name: Robert Morris University, City: Moon Township, Rank: 883
+    2) Name: Gonzaga University, City: Spokane, Rank: 364
+    3) Name: Bennington College, City: Bennington, Rank: 635
+    4) Name: Arizona Christian University, City: Glendale, Rank: 1368
+    5) Name: Antioch University Seattle, City: Seattle, Rank: -1
+    6) Name: Antioch University Santa Barbara, City: Santa Barbara, Rank: -1
+    7) Name: Bay State College, City: Boston, Rank: 1571
+    8) Name: DeSales University, City: Center Valley, Rank: 804
+    9) Name: California State University- Stanislaus, City: Turlock, Rank: 387
+   10) Name: Bluefield University, City: Bluefield, Rank: 1305
+   11) Name: Daemen University, City: Amherst, Rank: 1010
+   12) Name: Fitchburg State University, City: Fitchburg, Rank: 1002
+   13) Name: Defiance College, City: Defiance, Rank: 1346
+   14) Name: Marquette University, City: Milwaukee, Rank: 139
+   15) Name: Huntingdon College, City: Montgomery, Rank: 1197
+   16) Name: Hamilton College, City: Clinton, Rank: 338
+   17) Name: Harris-Stowe State University, City: St. Louis, Rank: 1309
+   18) Name: Johns Hopkins University, City: Baltimore, Rank: 17
+   19) Name: Husson University, City: Bangor, Rank: 969
+   20) Name: Lamar University, City: Beaumont, Rank: 332
+   21) Name: Metropolitan State University, City: Saint Paul, Rank: 1013
+   22) Name: Massachusetts Maritime Academy, City: Buzzards Bay, Rank: 1199
+   23) Name: Mary Baldwin University, City: Staunton, Rank: 1133
+   24) Name: Methodist College, City: Peoria, Rank: 1718
+   25) Name: Meredith College, City: Raleigh, Rank: 783
+   26) Name: Pennsylvania College of Health Sciences, City: Lancaster, Rank: 1689
+   27) Name: Oregon Institute of Technology, City: Klamath Falls, Rank: 817
+   28) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+   29) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+   30) Name: St John's College, City: Annapolis, Rank: 1009
+   31) Name: Samford University, City: Birmingham, Rank: 468
+   32) Name: Saint Elizabeth University, City: Morristown, Rank: 1438
+   33) Name: Southern New Hampshire University, City: Manchester, Rank: 146
+   34) Name: The University of Olivet, City: Olivet, Rank: 1505
+   35) Name: The Catholic University of America, City: Washington, Rank: 220
+   36) Name: The Institute of World Politics, City: Washington, Rank: 1343
+   37) Name: University of Delaware, City: Newark, Rank: 82
+   38) Name: University of Idaho, City: Moscow, Rank: 157
+   39) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+   40) Name: University of San Diego, City: San Diego, Rank: 222
+   41) Name: University of Montevallo, City: Montevallo, Rank: 1110
+   42) Name: Wabash College, City: Crawfordsville, Rank: 530
+   43) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+   44) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+   45) Name: Vassar College, City: Poughkeepsie, Rank: 211
+   46) Name: Winona State University, City: Winona, Rank: 691
+   47) Name: Whitman College, City: Walla Walla, Rank: 473
+   48) Name: Wofford College, City: Spartanburg, Rank: 690
+   49) Name: Winston-Salem State University, City: Winston-Salem, Rank: 963
+   50) Name: Zarathustra Medical School, City: Munchen, Rank: 2001
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: s
+
+Display University Selection Module
+Enter segment of university name: Univ
+
+Selected Data Displayed:
+6422124) Name: University of Delaware, City: Newark, Rank: 82
+6422124) Name: University of Detroit Mercy, City: Detroit, Rank: 541
+6422124) Name: University of Holy Cross, City: New Orleans, Rank: 1585
+6422124) Name: University of Idaho, City: Moscow, Rank: 157
+6422124) Name: University of Montevallo, City: Montevallo, Rank: 1110
+6422124) Name: University of San Diego, City: San Diego, Rank: 222
+6422124) Name: University of Silicon Valley, City: San Jose, Rank: 1379
+6422124) Name: University of South Carolina-Beaufort, City: Bluffton, Rank: 1153
+6422124) Name: University of South Carolina-Upstate, City: Spartanburg, Rank: 1014
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: g
+                                                                                                                                R
+                                                                G                                                                                                                               U
+                                B                                                               M                                                               U                                                               W
+                A                               D                               H                               M                               S                               U                               U                               W
+        A               B               C               F               H               J               M               P               S               T               U               U               U               V               W               W
+    A       -       -       -       B       D       D       -       -       H       H       L       M       M       O       -       S       S       T       U       -       -       U       -       -       -       -       -       -       -       W       Z
+  -   -                           -   -   -   -   -   -                   -   -   -   -   -   -   -   -   M   -   -   -           -   -   -   -   -   T   -   -                   -   -                                                           -   -   -   -
+                                                                                                         - -                                         - -                                                                                     
+
+Binary Search Tree Test Program
+===============================
+1) (A)dd or Replace Item
+2) (F)ind Item
+3) (C)opy Tree
+4) Display Data (I)n Order
+5) Display Data Pos(t) Order
+6) Display Data Pr(e) Order
+7) Display (S)elected Data
+8) Display (G)raphic Tree Structure
+9) End (P)rogram
+
+Enter selection: p
+
+End Program
