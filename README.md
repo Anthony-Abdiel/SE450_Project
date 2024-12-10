@@ -11,6 +11,9 @@ Deepstate Testing Harness:      test_avl_tree.cpp
 
 Mutation Analysis Script:       run_tests.sh
 
+
+Main File for Fuzzing:          avlMain.c
+
 AFL Seed Files:                 /aflIn
 
 AFL Output Directory:           /aflOut
