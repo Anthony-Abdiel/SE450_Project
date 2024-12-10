@@ -1,0 +1,28 @@
+insert Stanford Stanford_City 1
+insert AlexanderUniv flagstaff 70
+DPRE
+insert jatzuniv thGhetto 100
+insert MIT Cambridge 2
+insert goob goobVille 15
+CLR
+insert Ronald McDonald 20
+insert by? idk 45
+DPOST
+insert sadness myBrain 10
+insert goofyGooberUniv bikiniBottom 14
+insert sponchBob pineapple 3
+search MIT
+DIO
+VALH
+CNT
+insert palbud kentucky 22
+insert radBoi ohio 18
+CNT
+VALH
+insert hive beeTown 47
+insert teenagers cali 89
+insert patrik star 78
+insert dorothy kansas 6
+insert error smashBros 96
+insert noice memes 69
+CLR

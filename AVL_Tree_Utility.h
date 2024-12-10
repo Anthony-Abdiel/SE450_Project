@@ -5,9 +5,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include "File_Input_Utility.h"
+//#include "File_Input_Utility.h"
 #include "GeneralUtility.h"
 #include "StandardConstants.h"
+#include <math.h>
 
 // Constants
    // none
@@ -331,9 +332,9 @@ Device input/---: none
 Device output/---: none
 Dependencies: displayValue, displayEmptyNodeSpaces
 */
-void displayAtTreeLevel( AvlTreeNodeType *workingNode, int nodeHeight, 
-                                  int displayLevel, int workingLevel, 
-                                                           bool *rowStartFlag );
+//void displayAtTreeLevel( AvlTreeNodeType *workingNode, int nodeHeight, 
+//                                  int displayLevel, int workingLevel, 
+//                                                           bool *rowStartFlag );
 
 /*
 Name: displayDivider
@@ -349,7 +350,7 @@ Device input/---: none
 Device output/---: characters displayed as specified
 Dependencies: printf
 */
-void displayDivider( AvlTreeNodeType *rootPtr, char dividerChar );
+//void displayDivider( AvlTreeNodeType *rootPtr, char dividerChar );
 
 /*
 Name: displayEmptyNodeSpaces
@@ -363,8 +364,8 @@ Device input/---: none
 Device output/---: characters displayed as specified
 Dependencies: privateToPower, displayValue
 */
-void displayEmptyNodeSpaces( int nodeHeight, 
-                       int displayLevel, int workingLevel, bool *rowStartFlag );
+//void displayEmptyNodeSpaces( int nodeHeight, 
+//                       int displayLevel, int workingLevel, bool *rowStartFlag );
 
 /*
 Name: displayTreeStructure
@@ -378,7 +379,7 @@ Device input/---: none
 Device output/---: characters displayed as specified
 Dependencies: findTreeHeight, displayAtTreeLevel, printf
 */
-void displayTreeStructure( AvlTreeNodeType *avlTreeRoot );
+//void displayTreeStructure( AvlTreeNodeType *avlTreeRoot );
 
 /*
 Name: displayValue
@@ -393,8 +394,23 @@ Device input/---: none
 Device output/---: character displayed as specified
 Dependencies: privateToPower, displayChars, printf
 */
-void displayValue( char data, int nodeHeight, 
-                                          int workingLevel, bool *rowStartFlag );
+//void displayValue( char data, int nodeHeight, 
+//                                          int workingLevel, bool *rowStartFlag );
+
+
+
+
+//TESTING FUNCTIONS 
+
+
+bool isBalanced(AvlTreeNodeType* node);
+
+bool containsKey(AvlTreeNodeType* node, const char *name);
+
+bool isHeightValid(AvlTreeNodeType* root, int nodeCount);
+
+int countNodes(AvlTreeNodeType* node);
+
 
 
 #endif   // AVL_TREE_UTILITY_H

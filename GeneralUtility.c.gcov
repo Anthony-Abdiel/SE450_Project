@@ -1,0 +1,217 @@
+        -:    0:Source:GeneralUtility.c
+        -:    0:Graph:GeneralUtility.gcno
+        -:    0:Data:GeneralUtility.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// Header files ///////////////////////////////////////////////////////////////
+        -:    2:#include "GeneralUtility.h"
+        -:    3:
+        -:    4:// global constants ////////////////////////////////////////////////////////////
+        -:    5:
+        -:    6:   // None
+        -:    7:
+        -:    8:/*
+        -:    9:Name: privateCompareStrings
+        -:   10:Process: compares two strings as follows:
+        -:   11:         - if left string is alphabetically greater than the right string, 
+        -:   12:         returns value greater than zero
+        -:   13:         - if left string is alphabetically less than the right string, 
+        -:   14:         returns value less than zero
+        -:   15:         - if strings are alphabetically equal but one is longer, 
+        -:   16:           longer one is greater
+        -:   17:         - otherwise, returns zero
+        -:   18:Function input/parameters: two strings to be compared (const char *)
+        -:   19:Function output/parameters: none
+        -:   20:Function output/returned: result as specified above (int)
+        -:   21:Device input/ ---: none
+        -:   22:Device output/ ---: none
+        -:   23:Dependencies: privateGetStringLength
+        -:   24:*/
+       16:   25:int privateCompareStrings( const char *leftStr, const char *rightStr )
+        -:   26:   {
+       16:   27:    int diff, index = 0;
+       16:   28:    int leftStrLen = privateGetStringLength( leftStr );
+       16:   29:    int rightStrLen = privateGetStringLength( rightStr );
+        -:   30:
+      192:   31:    while( index < leftStrLen && index < rightStrLen )
+        -:   32:       {
+      192:   33:        diff = leftStr[ index ] - rightStr[ index ];
+        -:   34:
+      192:   35:        if( diff != 0 )
+        -:   36:           {
+       16:   37:            return diff;
+        -:   38:           }
+        -:   39:
+      176:   40:        index++;
+        -:   41:       }
+        -:   42:
+    #####:   43:    return leftStrLen - rightStrLen;
+       16:   44:   }
+        -:   45:
+        -:   46:/*
+        -:   47:Name: privateCompareStringSegments
+        -:   48:Process: compares two string segments as follows:
+        -:   49:         - compares the string segments up to the length of the test segment
+        -:   50:         - if test segment segment is alphabetically greater 
+        -:   51:                                      than the equal sized right string segment, 
+        -:   52:         returns value greater than zero
+        -:   53:         - if test segment segment is alphabetically less 
+        -:   54:                                                  than the right string segment, 
+        -:   55:         returns value less than zero
+        -:   56:         - if string segments are equal returns zero
+        -:   57:Function input/parameters: two strings to be compared (const char *)
+        -:   58:Function output/parameters: none
+        -:   59:Function output/returned: result as specified above (int)
+        -:   60:Device input/---: none
+        -:   61:Device output/---: none
+        -:   62:Dependencies: strlen
+        -:   63:*/
+        4:   64:int privateCompareStringSegments( const char *testSegment, const char *otherStr )
+        -:   65:   {
+        4:   66:    int diff, index = 0;
+        4:   67:    int testSegStrLen = strlen( testSegment );
+        -:   68:
+       50:   69:    while( index < testSegStrLen )
+        -:   70:       {
+       48:   71:        diff = testSegment[ index ] - otherStr[ index ];
+        -:   72:
+       48:   73:        if( diff != 0 )
+        -:   74:           {
+        2:   75:            return diff;
+        -:   76:           }
+        -:   77:
+       46:   78:        index++;
+        -:   79:       }
+        -:   80:
+        2:   81:    return 0;
+        4:   82:   }
+        -:   83:
+        -:   84:/*
+        -:   85:Name: privateCopyString
+        -:   86:Process: copies string character for character up to NULL_CHAR of source string
+        -:   87:Function input/parameters: source string to be copied (const char *)
+        -:   88:Function output/parameters: destination string (char *)
+        -:   89:Function output/returned: none
+        -:   90:Device input/---: none
+        -:   91:Device output/---: none
+        -:   92:Dependencies: none
+        -:   93:*/
+       16:   94:void privateCopyString( char *dest, const char *source )
+        -:   95:   {
+       16:   96:    int index = 0;
+        -:   97:
+      165:   98:    while( source[ index ] != NULL_CHAR )
+        -:   99:       {
+      149:  100:        dest[ index ] = source[ index ];
+        -:  101:
+      149:  102:        index++;
+        -:  103:
+      149:  104:        dest[ index ] = NULL_CHAR;
+        -:  105:       }
+       16:  106:   }
+        -:  107:
+        -:  108:/*
+        -:  109:Name: privateDisplayChars
+        -:  110:Process: recursively displays a specified number of characters
+        -:  111:Function input/parameters: number of characters (int), output character (char)
+        -:  112:Function output/parameters: none
+        -:  113:Function output/returned: none
+        -:  114:Device input/---: none
+        -:  115:Device output/monitor: characters displayed as specified
+        -:  116:Dependencies: privateDisplayChars (recursively), printf
+        -:  117:*/
+       16:  118:void privateDisplayChars( int numChars, char outChar )
+        -:  119:   {
+       16:  120:    if( numChars > 0 )
+        -:  121:       {
+       12:  122:        printf( "%c", outChar );
+        -:  123:        
+       12:  124:        privateDisplayChars( numChars - 1, outChar );
+       12:  125:       }
+       16:  126:   }
+        -:  127:
+        -:  128:/*
+        -:  129:Name: privateFindMax
+        -:  130:Process: finds maximum between two values, returns larger
+        -:  131:Function input/parameters: two values (int)
+        -:  132:Function output/parameters: none
+        -:  133:Function output/returned: larger of two values (int)
+        -:  134:Device input/---: none
+        -:  135:Device output/---: none
+        -:  136:Dependencies: none
+        -:  137:*/
+       60:  138:int privateFindMax( int one, int other )
+        -:  139:   {
+       60:  140:    int larger = one;
+        -:  141:
+       60:  142:    if( other > larger )
+        -:  143:       {
+       11:  144:        return other;
+        -:  145:       }
+        -:  146:
+       49:  147:    return one;
+       60:  148:   }
+        -:  149:
+        -:  150:/*
+        -:  151:Name: privateGetRandBetween
+        -:  152:Process: generates and returns a random value
+        -:  153:         between two given values, inclusive
+        -:  154:Function Input/Parameters: low, high limits (int)
+        -:  155:Function Output/Parameters: none
+        -:  156:Function Output/Returned: random value as specified
+        -:  157:Device Input/---: none
+        -:  158:Device Output/---: none
+        -:  159:Dependencies: rand
+        -:  160:*/
+    #####:  161:int privateGetRandBetween( int lowVal, int highVal )
+        -:  162:   {
+    #####:  163:    int range = highVal - lowVal + 1;
+        -:  164:
+    #####:  165:    return rand() % range + lowVal;
+        -:  166:   }
+        -:  167:
+        -:  168:/*
+        -:  169:Name: privateGetStringLength
+        -:  170:Process: finds length of string
+        -:  171:Function input/parameters: c-style string (const char *)
+        -:  172:Function output/parameters: none
+        -:  173:Function output/returned: calculated length of string (int)
+        -:  174:Device input/ ---: none
+        -:  175:Device output/ ---: none
+        -:  176:Dependencies: none
+        -:  177:*/
+       32:  178:int privateGetStringLength( const char *str )
+        -:  179:   {
+       32:  180:    int index = 0;
+        -:  181:
+      448:  182:    while( str[ index ] != 0 )
+        -:  183:       {
+      416:  184:        index++;
+        -:  185:       }
+        -:  186:
+       32:  187:    return index;
+        -:  188:   }
+        -:  189:
+        -:  190:/*
+        -:  191:Name: privateToPower
+        -:  192:Process: recursively calculates a base to exponent value 
+        -:  193:         for positive integer exponents
+        -:  194:Function input/parameters: base, exponent (int)
+        -:  195:Function output/parameters: none
+        -:  196:Function output/returned: calculated value (int)
+        -:  197:Device input/---: none
+        -:  198:Device output/---: none
+        -:  199:Dependencies: none
+        -:  200:*/
+    #####:  201:int privateToPower( int base, int exponent )
+        -:  202:   {
+    #####:  203:    if( exponent > 0 )
+        -:  204:       {
+    #####:  205:        return privateToPower( base, exponent - 1 ) * base;
+        -:  206:       }
+        -:  207:  
+    #####:  208:    return 1;
+    #####:  209:   }
+        -:  210:
+        -:  211:
+        -:  212:

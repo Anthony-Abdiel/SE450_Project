@@ -1,0 +1,1012 @@
+        -:    0:Source:AVL_Tree_Utility.c
+        -:    0:Graph:AVL_Tree_Utility.gcno
+        -:    0:Data:AVL_Tree_Utility.gcda
+        -:    0:Runs:6
+        -:    0:Programs:1
+        -:    1:#include "AVL_Tree_Utility.h"
+        -:    2:#include <math.h>
+        -:    3:
+        -:    4:
+        -:    5://Anthony A. Narvaez
+        -:    6:
+        -:    7:
+        -:    8:/*
+        -:    9:Name: clearTree
+        -:   10:Process: recursively removes all nodes from tree and returns memory to OS,
+        -:   11:         uses post order traversal strategy
+        -:   12:Function input/parameters: pointer to root/ working pointer (AvlTreeNodType *)
+        -:   13:Function output/parameters: none
+        -:   14:Function output/returned: NULL
+        -:   15:Device input/---: none
+        -:   16:Device output/---: none
+        -:   17:Dependencies: free, clearTree (recursively)
+        -:   18:*/
+       20:   19:AvlTreeNodeType *clearTree( AvlTreeNodeType *wkgPtr )
+        -:   20:   {
+        -:   21:    //make sure working pointer isn't NULL
+       20:   22:    if( wkgPtr != NULL )
+        -:   23:       {
+        -:   24:         //call left recursion
+        8:   25:         clearTree( wkgPtr->leftChildPtr );
+        -:   26:
+        -:   27:         //call right recursion
+        8:   28:         clearTree( wkgPtr->rightChildPtr );
+        -:   29:
+        -:   30:         //free parent
+        8:   31:         free( wkgPtr );
+        8:   32:       }
+       20:   33:    return NULL;
+        -:   34:   }
+        -:   35:
+        -:   36:/*
+        -:   37:Name: copyTree
+        -:   38:Process: creates duplicate copy of given tree, allocates all new nodes,
+        -:   39:         returns pointer to root of new tree or NULL if original tree was empty,
+        -:   40:         uses pre order traversal strategy
+        -:   41:Function input/parameters: tree root/working pointer (AvlTreeNodeType *)
+        -:   42:Function output/parameters: none
+        -:   43:Function output/returned: tree root of copied tree
+        -:   44:                          or NULL as specified (AvlTreeNodeType *)
+        -:   45:Device input/---: none
+        -:   46:Device output/---: none
+        -:   47:Dependencies: createNodeFromNode, copyTree (recursively)
+        -:   48:*/
+    #####:   49:AvlTreeNodeType *copyTree( AvlTreeNodeType *wkgPtr )
+        -:   50:   {
+        -:   51:    //declare the new local node
+    #####:   52:    AvlTreeNodeType *newNode = NULL;
+        -:   53:    
+        -:   54:    //check to make sure the pointer is not NULL 
+    #####:   55:    if( wkgPtr != NULL )
+        -:   56:       {
+    #####:   57:        newNode = createNodeFromNode( *wkgPtr );
+        -:   58:
+        -:   59:        //call recursion on left child
+    #####:   60:        newNode->leftChildPtr = copyTree( wkgPtr->leftChildPtr );
+        -:   61:        
+        -:   62:        //call recursion on right child
+    #####:   63:        newNode->rightChildPtr = copyTree( wkgPtr->rightChildPtr );
+    #####:   64:       }
+        -:   65:
+    #####:   66:    return newNode;
+        -:   67:   }
+        -:   68:
+        -:   69:/*
+        -:   70:Name: createNodeFromData
+        -:   71:Process: captures data from individual data items, 
+        -:   72:         dynamically creates new node,
+        -:   73:         copies data, and returns pointer to new node         
+        -:   74:Function input/parameters: university and city (const char *), rank (int)
+        -:   75:Function output/parameters: none
+        -:   76:Function output/returned: pointer to new node as specified (AvlTreeNodeType *)
+        -:   77:Device input/---: none
+        -:   78:Device output/---: none
+        -:   79:Dependencies: malloc, privateCopyString
+        -:   80:*/
+        8:   81:AvlTreeNodeType *createNodeFromData( const char *univName, 
+        -:   82:                                           const char *univCity, int univRank )
+        -:   83:   {
+        -:   84:    //declare the new node, allocate memory for it
+        8:   85:    AvlTreeNodeType *newNode = (AvlTreeNodeType*)malloc( sizeof( AvlTreeNodeType ) );
+        -:   86:
+        -:   87:    //copy data over to new node
+        8:   88:    privateCopyString( newNode->name, univName );
+        8:   89:    privateCopyString( newNode->city, univCity );
+        8:   90:    newNode->rank = univRank;
+        -:   91:
+        -:   92:    //set children to node 
+        8:   93:    newNode->leftChildPtr = NULL;
+        8:   94:    newNode->rightChildPtr = NULL;
+        -:   95:
+        8:   96:    return newNode;
+        -:   97:   }
+        -:   98:
+        -:   99:/*
+        -:  100:Name: createNodeFromNode
+        -:  101:Process: captures data from source node pointer, dynamically creates new node,
+        -:  102:         copies data, and returns pointer to new node         
+        -:  103:Function input/parameters: node to be copied (const AvlTreeNodeType)
+        -:  104:Function output/parameters: none
+        -:  105:Function output/returned: pointer to new node as specified (AvlTreeNodeType *)
+        -:  106:Device input/---: none
+        -:  107:Device output/---: none
+        -:  108:Dependencies: createNodeFromData
+        -:  109:*/
+    #####:  110:AvlTreeNodeType *createNodeFromNode( const AvlTreeNodeType source )
+        -:  111:   {
+        -:  112:    //return created node
+    #####:  113:    return createNodeFromData( source.name, source.city, source.rank );
+        -:  114:   }
+        -:  115:
+        -:  116:/*
+        -:  117:Name: displayInOrder
+        -:  118:Process: recursively displays numbered tree items using in order traversal
+        -:  119:Function input/parameters: working pointer for recursion 
+        -:  120:                                                       (const AvlTreeNodeType *),
+        -:  121:                           pointer to display number (int *)
+        -:  122:Function output/parameters: pointer to display number (int *)
+        -:  123:Function output/returned: none
+        -:  124:Device input/---: none
+        -:  125:Device output/monitor: displayed as specified
+        -:  126:Dependencies: universityDataToString, printf, displayInOrder (recursively)
+        -:  127:Note: Uses printf control to align numbering
+        -:  128:*/
+        3:  129:void displayInOrder( const AvlTreeNodeType *univPtr, int *number )
+        -:  130:   {
+        -:  131:    //check that the wkgPtr is not NULL
+        3:  132:    if( univPtr != NULL )
+        -:  133:       {
+        -:  134:        //declare the string buffer used for data display
+        -:  135:        char buffer[ MAX_STR_LEN ];
+        -:  136:        
+        -:  137:        //call recursion on left child
+        1:  138:        displayInOrder( univPtr->leftChildPtr, number );
+        -:  139:
+        -:  140:        //print parent
+        -:  141:            //build the string
+        1:  142:        universityDataToString( buffer, *univPtr );
+        -:  143:
+        -:  144:            //display the data
+        1:  145:        printf( "%5d) %s\n", *number, buffer);
+        -:  146:
+        -:  147:            //increment the number for next printing operation
+        1:  148:        *number = *number + 1;
+        -:  149:
+        -:  150:        //call recursion on right child
+        1:  151:        displayInOrder( univPtr->rightChildPtr, number );
+        1:  152:       }
+        3:  153:   }
+        -:  154:
+        -:  155:/*
+        -:  156:Name: displayPostOrder
+        -:  157:Process: recursively displays numbered tree items using post order traversal
+        -:  158:Function input/parameters: working pointer for recursion 
+        -:  159:                                                       (const AvlTreeNodeType *),
+        -:  160:                           pointer to display number (int *)
+        -:  161:Function output/parameters: pointer to display number (int *)
+        -:  162:Function output/returned: none
+        -:  163:Device input/---: none
+        -:  164:Device output/monitor: displayed as specified
+        -:  165:Dependencies: universityDataToString, printf, displayPostOrder (recursively)
+        -:  166:Note: Uses printf control to align numbering
+        -:  167:*/
+    #####:  168:void displayPostOrder( const AvlTreeNodeType *univPtr, int *number )
+        -:  169:   {
+        -:  170:    //check to make sure pointer is not NULL
+    #####:  171:    if( univPtr != NULL )
+        -:  172:       {
+        -:  173:        //declare string buffer used for data display 
+        -:  174:        char strBuffer[ MAX_STR_LEN ];
+        -:  175:
+        -:  176:        //call recursion on left child with incremented number
+    #####:  177:        displayPostOrder( univPtr->leftChildPtr, number );
+        -:  178:
+        -:  179:        //call recursion on right child with incremented number
+    #####:  180:        displayPostOrder( univPtr->rightChildPtr, number );
+        -:  181:
+        -:  182:        //leaf node, print parent
+        -:  183:            //build string to display
+    #####:  184:        universityDataToString( strBuffer, *univPtr );
+        -:  185:
+        -:  186:            //display the data
+    #####:  187:        printf( "%5d) %s\n", *number, strBuffer );
+        -:  188:
+        -:  189:        //incrememnt number 
+    #####:  190:        *number = *number + 1;
+    #####:  191:       }
+    #####:  192:   }
+        -:  193:
+        -:  194:/*
+        -:  195:Name: displayPreOrder
+        -:  196:Process: recursively displays numbered tree items using pre order traversal
+        -:  197:Function input/parameters: working pointer for recursion 
+        -:  198:                                                       (const AvlTreeNodeType *),
+        -:  199:                           pointer to display number (int *)
+        -:  200:Function output/parameters: pointer to display number (int *)
+        -:  201:Function output/returned: none
+        -:  202:Device input/---: none
+        -:  203:Device output/monitor: displayed as specified
+        -:  204:Dependencies: universityDataToString, printf, displayPreOrder (recursively)
+        -:  205:Note: Uses printf control to align numbering
+        -:  206:*/
+    #####:  207:void displayPreOrder( const AvlTreeNodeType *univPtr, int *number )
+        -:  208:   {
+        -:  209:    //check to make sure the pointer is not NULL  
+    #####:  210:    if( univPtr != NULL )
+        -:  211:       {
+        -:  212:        //declare string buffer used for data display
+        -:  213:        char strBuffer[ MAX_STR_LEN ];
+        -:  214:
+        -:  215:        //display parent
+        -:  216:            //build string to display
+    #####:  217:        universityDataToString( strBuffer, *univPtr );
+        -:  218:
+        -:  219:            //display the data
+    #####:  220:        printf( "%5d) %s\n", *number, strBuffer );
+        -:  221:
+        -:  222:            //increment number for next printing operation
+    #####:  223:        *number = *number + 1;
+        -:  224:
+        -:  225:        //call recursion on left child
+    #####:  226:        displayPreOrder( univPtr->leftChildPtr, number );
+        -:  227:        
+        -:  228:        //call recursion on right child
+    #####:  229:        displayPreOrder( univPtr->rightChildPtr, number );
+    #####:  230:       }
+    #####:  231:   }
+        -:  232:
+        -:  233:/*
+        -:  234:Name: displaySelectionInOrder
+        -:  235:Process: recursively displays numbered selected items in tree using 
+        -:  236:         in order traversal, items are specified by provided starting segment 
+        -:  237:         of university name string
+        -:  238:Function input/parameters: working pointer for recursion 
+        -:  239:                                                       (const AvlTreeNodeType *),
+        -:  240:                           name segment for searching (const char *)
+        -:  241:                           pointer to display number (int *)
+        -:  242:Function output/parameters: none
+        -:  243:Function output/returned: none
+        -:  244:Device input/---: none
+        -:  245:Device output/monitor: displayed as specified
+        -:  246:Dependencies: privateCompareStringSegments, universityDataToString, printf,
+        -:  247:              displaySelectionInOrder (recursively)
+        -:  248:*/
+    #####:  249:void displaySelectionInOrder( AvlTreeNodeType *univPtr, 
+        -:  250:                                         const char *nameSegment, int *number )
+        -:  251:   {
+        -:  252:    //make sure the node isn't NULL
+    #####:  253:    if( univPtr != NULL )
+        -:  254:       {
+        -:  255:        //declare the string buffer for data display
+        -:  256:        char strBuffer[MAX_STR_LEN];   
+        -:  257:
+        -:  258:        //call recursion on left child
+    #####:  259:        displaySelectionInOrder( univPtr->leftChildPtr, nameSegment, number );
+        -:  260:
+        -:  261:        //display parent if it contains the given segment
+    #####:  262:        if( privateCompareStringSegments( nameSegment, univPtr->name ) == 0 )
+        -:  263:           {
+        -:  264:            //build the string to display 
+    #####:  265:            universityDataToString( strBuffer, *univPtr );
+        -:  266:
+        -:  267:            //print the name with the number 
+    #####:  268:            printf( "%5d) %s\n", *number, strBuffer );
+        -:  269:
+        -:  270:            //increment number for next printing operation
+    #####:  271:            *number = *number+1;
+    #####:  272:           }
+        -:  273:        
+        -:  274:        //call recursion on right child
+    #####:  275:        displaySelectionInOrder( univPtr->rightChildPtr, nameSegment, number );
+    #####:  276:       }
+    #####:  277:   }
+        -:  278:
+        -:  279:/*
+        -:  280:Name: findBalanceFactor
+        -:  281:Process: finds balance factor by subtracting
+        -:  282:         height differences between left and right subtrees,
+        -:  283:         returns if found, returns zero if pointer is NULL
+        -:  284:Function input/parameters: pointer to current tree location (TreeNodeType *)
+        -:  285:Function output/parameters: none
+        -:  286:Function output/returned: difference between two subtree heights (int)
+        -:  287:Device input/---: none
+        -:  288:Device output/---: none
+        -:  289:Dependencies: findTreeHeight
+        -:  290:*/
+       16:  291:int findBalanceFactor( AvlTreeNodeType *wkgPtr )
+        -:  292:   {
+        -:  293:    //check if pointer is not NULL
+       16:  294:    if( wkgPtr != NULL )
+        -:  295:       {
+        -:  296:        //declare the left and right height variables
+        -:  297:        int leftHeight, rightHeight;
+        -:  298:
+        -:  299:        //find left and right heights
+       16:  300:        leftHeight = findTreeHeight( wkgPtr->leftChildPtr );
+       16:  301:        rightHeight = findTreeHeight( wkgPtr->rightChildPtr );
+        -:  302:        
+        -:  303:        //calculate and return balance factor (Left height - Right height)
+       16:  304:        return leftHeight - rightHeight;
+        -:  305:       }
+    #####:  306:    return 0;
+       16:  307:   }
+        -:  308:
+        -:  309:/*
+        -:  310:Name: findTreeHeight
+        -:  311:Process: recursively finds maximum tree height from current node 
+        -:  312:         to bottom of tree
+        -:  313:Function input/parameters: pointer to current tree location (AvlTreeNodeType *)
+        -:  314:Function output/parameters: none
+        -:  315:Function output/returned: -1 if empty tree, 0 if no subtrees,
+        -:  316:                          max height of subtrees otherwise
+        -:  317:Device input/---: none
+        -:  318:Device output/---: none
+        -:  319:Dependencies: privateFindMax, findTreeHeight (recursively)
+        -:  320:*/
+      190:  321:int findTreeHeight( AvlTreeNodeType *wkgPtr )
+        -:  322:   {
+        -:  323:    //check if working pointer is not NULL
+      190:  324:    if( wkgPtr != NULL )
+        -:  325:       {
+        -:  326:        //declare left and right height variables
+        -:  327:        int leftHeight, rightHeight;
+        -:  328:
+        -:  329:        //call left recursion, assigning height
+       60:  330:        leftHeight = findTreeHeight( wkgPtr->leftChildPtr);
+       60:  331:        rightHeight = findTreeHeight( wkgPtr->rightChildPtr);
+        -:  332:
+        -:  333:        //return the greter of the two heights plus 1 
+        -:  334:            //note: 1 is added to account for current node's height
+       60:  335:        return privateFindMax( leftHeight, rightHeight ) + 1;
+        -:  336:       }
+        -:  337:    
+        -:  338:    //if the wkg pointer is NULL, height is -1, return that
+      130:  339:    return -1;
+      190:  340:   }
+        -:  341:
+        -:  342:/*
+        -:  343:Name: getDataFromFile                                                               REMOVING FOR TESTING PURPOSES
+        -:  344:Process: uploads data from file with unknown number of data sets,
+        -:  345:         has internal Boolean to display data input success
+        -:  346:Function input/parameters: file name (const char *)
+        -:  347:Function output/parameters: none
+        -:  348:Function output/returned: pointer to BST holding data (AvlTreeNodeType *)
+        -:  349:Device input/---: data from HD
+        -:  350:Device output/monitor: if internal Boolean set, displays uploaded values
+        -:  351:Dependencies: openInputFile, readStringToLineEndFromFile, 
+        -:  352:              checkForEndOfInputFile, readIntegerFromFile,
+        -:  353:              readStringToDelimiterFromFile, readCharacterFromFile, 
+        -:  354:              insertRawData, printf, closeInputFile
+        -:  355:*/
+        -:  356:// AvlTreeNodeType *getDataFromFile( const char *fileName )
+        -:  357://    {
+        -:  358://     //declare the first (root) node pointer
+        -:  359://     AvlTreeNodeType *rootNode = NULL;
+        -:  360:
+        -:  361://     //declare the boolean flag and counter for it
+        -:  362://     bool dispFlag = true;
+        -:  363://     int counter = 1;
+        -:  364:    
+        -:  365://     if( openInputFile( fileName ) )
+        -:  366://        {
+        -:  367://         //declare a string buffer for first line
+        -:  368://         char buffer[ MAX_STR_LEN ];
+        -:  369:
+        -:  370://         //declare variables to hold data from the file
+        -:  371://         char inName[ STD_STR_LEN ];
+        -:  372://         char inCity[ STD_STR_LEN ];
+        -:  373://         int inRank;
+        -:  374:
+        -:  375://         //read first line to skip csv description
+        -:  376://         readStringToLineEndFromFile( buffer );
+        -:  377:
+        -:  378://         //print first title and debug message (boolean flag)
+        -:  379://         if( dispFlag )
+        -:  380://            {
+        -:  381://             printf( "\nBegin Loading Data From File . . .\n" );
+        -:  382://            }
+        -:  383:
+        -:  384://         //get first integer to prime the loop (read priming)
+        -:  385://         inRank = readIntegerFromFile();
+        -:  386:
+        -:  387://         while( !checkForEndOfInputFile() )
+        -:  388://            {
+        -:  389://             //read the comma
+        -:  390://             readCharacterFromFile();
+        -:  391:
+        -:  392://             //read in the name
+        -:  393://             readStringToDelimiterFromFile( COMMA, inName );
+        -:  394:
+        -:  395://             //read in the city
+        -:  396://             readStringToLineEndFromFile( inCity );
+        -:  397:
+        -:  398:            
+        -:  399:
+        -:  400://             //insert the data into the BST
+        -:  401://             rootNode = insertRawData(rootNode, inName, inCity, inRank);
+        -:  402:
+        -:  403://             //test for flag and print if true
+        -:  404://             if( dispFlag )
+        -:  405://                {
+        -:  406://                 printf( "%5d) Name: %s, City: %s, Rank: %d\n", counter, inName, 
+        -:  407://                                                                inCity, inRank );
+        -:  408://                 counter = counter + 1;
+        -:  409://                }
+        -:  410:
+        -:  411://             //reprime the loop
+        -:  412://             inRank = readIntegerFromFile();
+        -:  413://            }
+        -:  414://        }
+        -:  415://     //print last loading debug message
+        -:  416://     if( dispFlag )
+        -:  417://        {
+        -:  418://         printf( 
+        -:  419://     "                                  . . . End Loading Data From File\n\n" );
+        -:  420://        }
+        -:  421:
+        -:  422://     //print debug message
+        -:  423://     closeInputFile();
+        -:  424:
+        -:  425://     return rootNode;
+        -:  426://    }
+        -:  427:   
+        -:  428:
+        -:  429:/*
+        -:  430:Name: initializeTree
+        -:  431:Process: returns NULL to set tree to empty
+        -:  432:Function input/parameters: none
+        -:  433:Function output/parameters: none
+        -:  434:Function output/returned: NULL
+        -:  435:Device input/---: none
+        -:  436:Device output/---: none
+        -:  437:Dependencies: none
+        -:  438:*/
+        4:  439:AvlTreeNodeType *initializeTree()
+        -:  440:   {
+        4:  441:    return NULL;
+        -:  442:   }
+        -:  443:
+        -:  444:/*
+        -:  445:Name: insertNodeData
+        -:  446:Process: recursively finds location to insert node, inserts node,
+        -:  447:         then follows recursion back up tree to implement balancing,
+        -:  448:         does not allow duplicate entries,
+        -:  449:         uses "look up" strategy for linking nodes
+        -:  450:Function input/parameters: pointer to current tree location (AvlTreeNodeType *),
+        -:  451:                           university node (const AvlTreeNodeType *)
+        -:  452:Function output/parameters: none
+        -:  453:Function output/returned: pointer to calling function/tree node above
+        -:  454:                          where function is called
+        -:  455:Device input/---: none
+        -:  456:Device output/monitor: actions displayed as function progresses
+        -:  457:                       ("Identified: <direction> <direction> Case")
+        -:  458:Dependencies: insertNodeData
+        -:  459:*/
+    #####:  460:AvlTreeNodeType *insertNodeData( AvlTreeNodeType *wkgPtr, 
+        -:  461:                                                const AvlTreeNodeType nodePtr )
+        -:  462:   {
+    #####:  463:    return insertRawData( wkgPtr, nodePtr.name, nodePtr.city, nodePtr.rank);
+        -:  464:   }
+        -:  465:
+        -:  466:/*
+        -:  467:Name: insertRawData
+        -:  468:Process: recursively finds location to insert node, inserts node,
+        -:  469:         then follows recursion back up tree to implement balancing,
+        -:  470:         does not allow duplicate entries,
+        -:  471:         uses "look up" strategy for linking nodes
+        -:  472:Function input/parameters: pointer to current tree location (AvlTreeNodeType *),
+        -:  473:                           university and city names (const char *),
+        -:  474:                           university ranking (int)
+        -:  475:Function output/parameters: none
+        -:  476:Function output/returned: pointer to calling function/tree node above
+        -:  477:                          where function is called
+        -:  478:Device input/---: none
+        -:  479:Device output/monitor: actions displayed as function progresses
+        -:  480:                       ("Identified: <direction> <direction> Case")
+        -:  481:Dependencies: createNodeFromData, privateCompareStrings, findBalanceFactor,
+        -:  482:              insertRawData (recursively), printf, rotateLeft, rotateRight,
+        -:  483:              privateDisplayChars
+        -:  484:*/
+       16:  485:AvlTreeNodeType *insertRawData( AvlTreeNodeType *wkgPtr, 
+        -:  486:                         const char *univName, const char *univCity, int rank )
+        -:  487:   {
+        -:  488:    //declare integer for balance factor and tree height
+        -:  489:    int balanceFactor, treeHeight;
+        -:  490:
+        -:  491:    //check to make sure current node isn't NULL
+       16:  492:    if( wkgPtr != NULL )
+        -:  493:       {
+        -:  494:        //check if given name is less than current node's name
+        8:  495:        if( privateCompareStrings( univName, wkgPtr->name ) < 0 )
+        -:  496:           {
+        -:  497:            //recurse left, setting the left child equal to the result
+        6:  498:            wkgPtr->leftChildPtr = insertRawData( wkgPtr->leftChildPtr, 
+        3:  499:                                                 univName, univCity, rank );
+        3:  500:           }
+        -:  501:
+        -:  502:        //check if given name is greater than current node's name
+        5:  503:        else if( privateCompareStrings( univName, wkgPtr->name ) > 0 )
+        -:  504:           {
+        -:  505:            //recurse right, setting the right child equal to the result
+       10:  506:            wkgPtr->rightChildPtr = insertRawData( wkgPtr->rightChildPtr, 
+        5:  507:                                                 univName, univCity, rank );
+        5:  508:           }
+        8:  509:       }
+        -:  510:    else
+        -:  511:       {
+        -:  512:        //found the spot to insert new node, create node
+        8:  513:        AvlTreeNodeType *newNode = 
+        8:  514:                             createNodeFromData( univName, univCity, rank );
+        -:  515:        
+        -:  516:        //set the working pointer to the new node
+        8:  517:        wkgPtr = newNode;
+        -:  518:       }
+        -:  519:    
+        -:  520:
+        -:  521:    //Balancing Code  V V V 
+        -:  522:
+        -:  523:    //find balance factor for current node 
+       16:  524:    balanceFactor = findBalanceFactor( wkgPtr );
+       16:  525:    treeHeight = findTreeHeight( wkgPtr );
+        -:  526:
+        -:  527:    
+        -:  528:    //identify right-left case
+       16:  529:    if( balanceFactor < -1 && privateCompareStrings( 
+        2:  530:                                    univName, wkgPtr->rightChildPtr->name) < 0 )
+        -:  531:       {
+        -:  532:        //display the action
+        -:  533:            //display leading spaces
+    #####:  534:        privateDisplayChars( treeHeight, SPACE );
+        -:  535:            
+        -:  536:            //display case
+    #####:  537:        printf( "Identified: Right Left Case\n" );
+        -:  538:
+        -:  539:        //apply first rotation on the right child of wkgPtr
+    #####:  540:        wkgPtr->rightChildPtr = rotateRight( wkgPtr->rightChildPtr );
+        -:  541:
+        -:  542:        //apply second roation on the wkgPtr and its right child
+    #####:  543:        wkgPtr = rotateLeft( wkgPtr );
+        -:  544:
+    #####:  545:       }
+        -:  546:    //identify right-right case
+       16:  547:    else if( balanceFactor < -1 && privateCompareStrings( 
+        2:  548:                                   univName, wkgPtr->rightChildPtr->name ) > 0 )
+        -:  549:       {
+        -:  550:        //display the action
+        -:  551:            //display leading spaces
+        1:  552:        privateDisplayChars( treeHeight, SPACE );
+        -:  553:            
+        -:  554:            //display case
+        1:  555:        printf( "Identified: Right Right Case\n" );
+        -:  556:
+        -:  557:        //just rotate right on the wkg ptr
+        1:  558:        wkgPtr = rotateLeft( wkgPtr );
+        -:  559:
+        1:  560:       }
+        -:  561:    //identify left-left case
+       15:  562:    else if( balanceFactor > 1 && privateCompareStrings( 
+        2:  563:                                    univName, wkgPtr->leftChildPtr->name ) < 0 )
+        -:  564:       {
+        -:  565:        //display the action
+        -:  566:            //display leading spaces
+        1:  567:        privateDisplayChars( treeHeight, SPACE );
+        -:  568:            
+        -:  569:            //display case
+        1:  570:        printf( "Identified: Left Left Case\n" );
+        -:  571:        
+        -:  572:        //just rotate left on the wkgPtr
+        1:  573:        wkgPtr = rotateRight( wkgPtr );
+        1:  574:       }
+        -:  575:    //identify left-right case
+       14:  576:    else if( balanceFactor > 1 && privateCompareStrings( 
+    #####:  577:                                    univName, wkgPtr->leftChildPtr->name ) > 0 )
+        -:  578:       {
+        -:  579:        //display the action
+        -:  580:            //display leading spaces
+    #####:  581:        privateDisplayChars( treeHeight, SPACE );
+        -:  582:            
+        -:  583:            //display case
+    #####:  584:        printf( "Identified: Left Right Case\n" );
+        -:  585:        
+        -:  586:        //apply first rotation on the left child of wkgPtr
+    #####:  587:        wkgPtr->leftChildPtr = rotateLeft( wkgPtr->leftChildPtr );
+        -:  588:
+        -:  589:        //apply second rotation on the wkgPtr
+    #####:  590:        wkgPtr = rotateRight( wkgPtr );
+    #####:  591:       }
+        -:  592:
+        -:  593:    
+        -:  594:    
+        -:  595:    //return the current local node
+       16:  596:    return wkgPtr;
+        -:  597:   }
+        -:  598:
+        -:  599:/*
+        -:  600:Name: isEmpty
+        -:  601:Process: reports if tree is empty
+        -:  602:Function input/parameters: pointer to current root node (AvlTreeNodeType *)
+        -:  603:Function output/parameters: none
+        -:  604:Function output/returned: Boolean result of test (bool)
+        -:  605:Device input/---: none
+        -:  606:Device output/---: none
+        -:  607:Dependencies: none
+        -:  608:*/
+    #####:  609:bool isEmpty( AvlTreeNodeType *rootPtr )
+        -:  610:   {
+    #####:  611:    return rootPtr == NULL;
+        -:  612:   }
+        -:  613:
+        -:  614:/*
+        -:  615:Name: rotateLeft
+        -:  616:Process: conducts left rotation by manipulation of given pointer,
+        -:  617:         displays "- Rotating Left" with an endline
+        -:  618:Function input/parameters: pointer to given subtree to rotate
+        -:  619:Function output/parameters: none
+        -:  620:Function output/returned: pointer to calling function/tree node above
+        -:  621:                          where function is called
+        -:  622:Device input/---: none
+        -:  623:Device output/monitor: rotation action displayed ("- Rotating Left")
+        -:  624:                       indented by current height of tree + 2
+        -:  625:Dependencies: printf, findTreeHeight, and privateDisplayChars for display
+        -:  626:*/
+        1:  627:AvlTreeNodeType *rotateLeft( AvlTreeNodeType *oldParentPtr )
+        -:  628:   {
+        -:  629:    //declare int for space alignment
+        1:  630:    int numSpaces = 2;
+        -:  631:
+        -:  632:    //declare tree height, find value
+        1:  633:    int height = findTreeHeight( oldParentPtr );
+        -:  634:
+        -:  635:    //display rotation
+        -:  636:
+        -:  637:        //print leading spaces
+        1:  638:    privateDisplayChars( numSpaces + height, SPACE );
+        -:  639:
+        -:  640:        //display action
+        1:  641:    printf( "- Rotating Left\n" );
+        -:  642:
+        -:  643:    //declare a temporary pointer, set it equal to right child (new root/parent)
+        1:  644:    AvlTreeNodeType *tempChild = oldParentPtr->rightChildPtr;
+        -:  645:
+        -:  646:    //declare temp pointer for child's left child
+        1:  647:    AvlTreeNodeType *tempChildLeft = oldParentPtr->rightChildPtr->leftChildPtr;
+        -:  648:
+        -:  649:    //set the left child of the right child of the root as the 
+        -:  650:    //old parent (rotating) ((this makes the right child the new root))
+        1:  651:    tempChild->leftChildPtr = oldParentPtr;
+        -:  652:
+        -:  653:    //restore branches 
+        1:  654:    tempChild->leftChildPtr->rightChildPtr = tempChildLeft;
+        -:  655:
+        -:  656:    //return the new root pointer
+        1:  657:    return tempChild;
+        -:  658:   }
+        -:  659:
+        -:  660:/*
+        -:  661:Name: rotateRight
+        -:  662:Process: conducts right rotation by manipulation of given pointer,
+        -:  663:         displays "- Rotating Right" with an endline
+        -:  664:Function input/parameters: pointer to given subtree to rotate
+        -:  665:Function output/parameters: none
+        -:  666:Function output/returned: pointer to calling function/tree node above
+        -:  667:                          where function is called
+        -:  668:Device input/---: none
+        -:  669:Device output/monitor: rotation action displayed  ("- Rotating Right")
+        -:  670:                       indented by current height of tree + 2
+        -:  671:Dependencies: printf, findTreeHeight, and privateDisplayChars for display
+        -:  672:*/
+        1:  673:AvlTreeNodeType *rotateRight( AvlTreeNodeType *oldParentPtr )
+        -:  674:   {
+        -:  675:    //declare int for space alignment
+        1:  676:    int numSpaces = 2;
+        -:  677:
+        -:  678:    //declare and calculate tree height
+        1:  679:    int height = findTreeHeight( oldParentPtr );
+        -:  680:
+        -:  681:    //display rotation
+        -:  682:
+        -:  683:        //print leading spaces
+        1:  684:    privateDisplayChars( numSpaces + height, SPACE );
+        -:  685:
+        -:  686:        //print action
+        1:  687:    printf( "- Rotating Right\n" );
+        -:  688:
+        -:  689:    //declare temp pointer, set equal to left child ( new root )
+        1:  690:    AvlTreeNodeType *tempChild = oldParentPtr->leftChildPtr;
+        -:  691:
+        -:  692:    //declare temp pointer for child's right pointer
+        1:  693:    AvlTreeNodeType *tempChildRight = oldParentPtr->leftChildPtr->rightChildPtr;
+        -:  694:
+        -:  695:    //set the right child of the left child of the root as the 
+        -:  696:    //old parent (rotating)  ((this makes the right child the new root))
+        1:  697:    tempChild->rightChildPtr = oldParentPtr;
+        -:  698:
+        -:  699:    //restore branches
+        1:  700:    tempChild->rightChildPtr->leftChildPtr = tempChildRight;
+        -:  701:
+        1:  702:    return tempChild;
+        -:  703:   }
+        -:  704:
+        -:  705:/*
+        -:  706:Name: search
+        -:  707:Process: recursively searches tree for specified data using university name key
+        -:  708:Function input/parameters: pointer to working subtree (AvlTreeNodeType *),
+        -:  709:                           university name (const char *)
+        -:  710:Function output/parameters: none
+        -:  711:Function output/returned: pointer to found node (AvlTreeNodeType *)
+        -:  712:Device input/---: none
+        -:  713:Device output/---: none
+        -:  714:Dependencies: privateCompareStrings, search (recursively)
+        -:  715:*/
+        3:  716:AvlTreeNodeType *search( AvlTreeNodeType *wkgPtr, const char *univName )
+        -:  717:   {
+        -:  718:    //make sure the working pointer is not NULL
+        3:  719:    if( wkgPtr != NULL )
+        -:  720:       {
+        -:  721:        //check for test less than node
+        2:  722:        if( privateCompareStringSegments( univName, wkgPtr->name ) < 0 )
+        -:  723:           {
+        -:  724:            //recurse left 
+    #####:  725:            wkgPtr = search( wkgPtr->leftChildPtr, univName );
+    #####:  726:           }
+        -:  727:        //check for test greater than node
+        2:  728:        else if( privateCompareStringSegments( univName, wkgPtr->name ) > 0 )
+        -:  729:           {
+        -:  730:            //recurse right 
+        1:  731:            wkgPtr = search( wkgPtr->rightChildPtr, univName );
+        1:  732:           }
+        -:  733:        //test must be the same as name, node found, return it 
+        2:  734:        return wkgPtr;
+        -:  735:       }
+        1:  736:    return NULL;
+        3:  737:   }
+        -:  738:
+        -:  739:/*
+        -:  740:Name: universityDataToString
+        -:  741:Process: sets data from node to formatted string
+        -:  742:Function input/parameters: node with data to be set (const AvlTreeNodeType)
+        -:  743:Function output/parameters: string array with result (char *)
+        -:  744:Function output/returned: none
+        -:  745:Device input/---: none
+        -:  746:Device output/---: none
+        -:  747:Dependencies: sprintf
+        -:  748:*/
+        1:  749:void universityDataToString( char *destStr, 
+        -:  750:                                         const AvlTreeNodeType universityData )
+        -:  751:   {
+        2:  752:    sprintf( destStr, "Name: %s, City: %s, Rank: %d", universityData.name, 
+        1:  753:                                      universityData.city, universityData.rank);
+        1:  754:   }
+        -:  755:
+        -:  756:
+        -:  757:
+        -:  758:
+        -:  759:
+        -:  760:
+        -:  761:
+        -:  762:// TESTING FUNCTION : isBalanced
+        -:  763:
+        -:  764:// Recursive function to check if the tree is balanced
+       24:  765:bool isBalanced(AvlTreeNodeType* node) {
+       24:  766:    if (node == NULL) {
+       14:  767:        return true;  // Base case: an empty tree is balanced
+        -:  768:    }
+        -:  769:
+        -:  770:    // Calculate heights of left and right subtrees
+       10:  771:    int leftHeight = findTreeHeight(node->leftChildPtr);
+       10:  772:    int rightHeight = findTreeHeight(node->rightChildPtr);
+        -:  773:
+        -:  774:    // Calculate balance factor
+       10:  775:    int balanceFactor = leftHeight - rightHeight;
+        -:  776:
+        -:  777:    // Check if the balance factor is within the allowed range
+       10:  778:    if (balanceFactor < -1 || balanceFactor > 1) {
+    #####:  779:        return false;  // Tree is not balanced
+        -:  780:    }
+        -:  781:
+        -:  782:    // Recursively check if left and right subtrees are balanced
+       10:  783:    return isBalanced(node->leftChildPtr) && isBalanced(node->rightChildPtr);
+       24:  784:}
+        -:  785:
+        -:  786:
+    #####:  787:bool containsKey(AvlTreeNodeType* node, const char *name) {
+    #####:  788:    if (node == NULL) {
+    #####:  789:        return false;
+        -:  790:    }
+    #####:  791:    if (privateCompareStrings(node->name, name) == 0) {
+    #####:  792:        return true;
+        -:  793:    }
+    #####:  794:    return containsKey(node->leftChildPtr, name) || containsKey(node->rightChildPtr, name);
+    #####:  795:}
+        -:  796:
+        -:  797:
+        -:  798:
+    #####:  799:bool isHeightValid(AvlTreeNodeType* root, int nodeCount) {
+    #####:  800:    int height = findTreeHeight(root);
+    #####:  801:    int maxHeight = (int)(1.44 * log2(nodeCount + 2) - 1);
+    #####:  802:    return height <= maxHeight;
+        -:  803:}
+        -:  804:
+    #####:  805:int countNodes(AvlTreeNodeType* node) {
+    #####:  806:    if (node == NULL) {
+    #####:  807:        return 0;  // Base case: no nodes in an empty tree
+        -:  808:    }
+    #####:  809:    return 1 + countNodes(node->leftChildPtr) + countNodes(node->rightChildPtr);
+    #####:  810:}
+        -:  811:
+        -:  812:
+        -:  813:
+        -:  814:
+        -:  815:
+        -:  816:
+        -:  817:
+        -:  818:
+        -:  819:
+        -:  820:////////////////////////////////////////////////////////////////////////////////
+        -:  821:// No student coding below this point
+        -:  822:////////////////////////////////////////////////////////////////////////////////
+        -:  823:
+        -:  824:/*
+        -:  825:Name: displayAtTreeLevel
+        -:  826:Process: displays one horizontal "level" of a tree using text graphics
+        -:  827:         with appropriate spacing and appropriate number of nodes
+        -:  828:Function input/parameters: recursive working node (AvlTreeNodeType *),
+        -:  829:                           node height, display level, working level (int),
+        -:  830:                           row start flag (bool)
+        -:  831:Function output/parameters: none
+        -:  832:Function output/returned: updated row start flag (bool *)
+        -:  833:Device input/---: none
+        -:  834:Device output/---: none
+        -:  835:Dependencies: displayValue, displayEmptyNodeSpaces
+        -:  836:*/
+    #####:  837:void displayAtTreeLevel( AvlTreeNodeType *workingNode, int nodeHeight, 
+        -:  838:                                  int displayLevel, int workingLevel, 
+        -:  839:                                                            bool *rowStartFlag )
+        -:  840:   {
+    #####:  841:    char charOut = workingNode->name[ 0 ];
+        -:  842:  
+    #####:  843:    if( workingLevel == displayLevel )
+        -:  844:       {
+    #####:  845:        displayValue( charOut, nodeHeight, workingLevel, rowStartFlag );
+    #####:  846:       }
+        -:  847:  
+        -:  848:    else
+        -:  849:       {
+    #####:  850:        if( workingNode->leftChildPtr != NULL )
+        -:  851:           {
+    #####:  852:            displayAtTreeLevel( workingNode->leftChildPtr, nodeHeight,
+    #####:  853:                                 displayLevel, workingLevel + 1, rowStartFlag );
+    #####:  854:           }
+        -:  855:  
+        -:  856:        else
+        -:  857:           {
+    #####:  858:            displayEmptyNodeSpaces( nodeHeight, displayLevel, 
+    #####:  859:                                               workingLevel + 1, rowStartFlag );
+        -:  860:           }
+        -:  861:      
+    #####:  862:        if( workingNode->rightChildPtr != NULL )
+        -:  863:           {
+    #####:  864:            displayAtTreeLevel( workingNode->rightChildPtr, nodeHeight,
+    #####:  865:                                 displayLevel, workingLevel + 1, rowStartFlag );
+    #####:  866:           }
+        -:  867:
+        -:  868:        else
+        -:  869:           {
+    #####:  870:            displayEmptyNodeSpaces( nodeHeight, displayLevel, 
+    #####:  871:                                               workingLevel + 1, rowStartFlag );
+        -:  872:           }              
+        -:  873:       }
+    #####:  874:   }
+        -:  875:
+        -:  876:/*
+        -:  877:Name: displayDivider
+        -:  878:Process: displays divider of correct length for tree
+        -:  879:         using either THICK_DIVIDER or THIN_DIVIDER 
+        -:  880:         depending on the control code,
+        -:  881:         adds one endline to thick divider, two to thin for spacing
+        -:  882:Function input/parameters: number of characters (int), 
+        -:  883:                           character to be displayed (char)
+        -:  884:Function output/parameters: none
+        -:  885:Function output/returned: none
+        -:  886:Device input/---: none
+        -:  887:Device output/---: characters displayed as specified
+        -:  888:Dependencies: printf
+        -:  889:*/
+    #####:  890:void displayDivider( AvlTreeNodeType *rootPtr, char dividerChar )
+        -:  891:   {
+    #####:  892:    int treeHeight = findTreeHeight( rootPtr );
+    #####:  893:    int numChars = privateToPower( 2, treeHeight + 2 );
+        -:  894:
+    #####:  895:    privateDisplayChars( numChars, dividerChar );
+        -:  896:
+    #####:  897:    if( dividerChar == THIN_DIVIDER )
+        -:  898:       {
+    #####:  899:        printf( "\n" );
+    #####:  900:       }
+        -:  901:
+    #####:  902:    printf( "\n" );
+    #####:  903:   }
+        -:  904:
+        -:  905:/*
+        -:  906:Name: displayEmptyNodeSpaces
+        -:  907:Process: displays the appropriate number of dashes for a given level
+        -:  908:         for null nodes, can display either dashes or 'B's
+        -:  909:Function input/parameters: node height, display level, working level (int)
+        -:  910:                           pointer to row start flag (bool *)
+        -:  911:Function output/parameters: none
+        -:  912:Function output/returned: updated row start flag (bool *)
+        -:  913:Device input/---: none
+        -:  914:Device output/---: characters displayed as specified
+        -:  915:Dependencies: privateToPower, displayValue
+        -:  916:*/
+    #####:  917:void displayEmptyNodeSpaces( int nodeHeight, 
+        -:  918:                        int displayLevel, int workingLevel, bool *rowStartFlag )
+        -:  919:   {
+    #####:  920:    int nodesToDisplay = privateToPower( 2, displayLevel - workingLevel ); 
+    #####:  921:    char charOut = SPACE;
+        -:  922:  
+    #####:  923:    if( displayLevel == workingLevel )
+        -:  924:       {
+    #####:  925:        charOut = DASH;
+    #####:  926:       }
+        -:  927:  
+    #####:  928:    while( nodesToDisplay > 0 )
+        -:  929:       {
+    #####:  930:        displayValue( charOut, nodeHeight, displayLevel, rowStartFlag );
+        -:  931:      
+    #####:  932:        nodesToDisplay--;
+        -:  933:       }
+    #####:  934:   }
+        -:  935:
+        -:  936:/*
+        -:  937:Name: displayTreeStructure
+        -:  938:Process: repeatedly calls other function to display 
+        -:  939:         the structure of an RB tree, can display either dashes or 'B's,
+        -:  940:         displays error message if empty tree
+        -:  941:Function input/parameters: tree root pointer (AvlTreeNodeType *)
+        -:  942:Function output/parameters: none
+        -:  943:Function output/returned: none
+        -:  944:Device input/---: none
+        -:  945:Device output/---: characters displayed as specified
+        -:  946:Dependencies: findTreeHeight, displayAtTreeLevel, printf
+        -:  947:*/
+    #####:  948:void displayTreeStructure( AvlTreeNodeType *avlTreeRoot )
+        -:  949:   {
+    #####:  950:    int displayLevel, nodeHeight = findTreeHeight( avlTreeRoot ) + 2;
+    #####:  951:    int workingLevel = 1;
+        -:  952:    bool rowStartFlag;
+        -:  953:
+    #####:  954:    if( avlTreeRoot != NULL )
+        -:  955:       {
+    #####:  956:        for( displayLevel = 1; displayLevel <= nodeHeight; displayLevel++ )
+        -:  957:           {
+    #####:  958:            rowStartFlag = true;
+        -:  959:          
+    #####:  960:            displayAtTreeLevel( avlTreeRoot, nodeHeight, 
+    #####:  961:                                    displayLevel, workingLevel, &rowStartFlag );
+        -:  962:          
+    #####:  963:            printf( "\n" );
+    #####:  964:           }
+    #####:  965:       }
+        -:  966:  
+        -:  967:    else
+        -:  968:       {
+    #####:  969:        printf( "\nEmpty Tree - No Display" );
+        -:  970:       }
+    #####:  971:   }
+        -:  972:
+        -:  973:/*
+        -:  974:Name: displayValue
+        -:  975:Process: displays a tree character value or color letter (R/B)
+        -:  976:         after a calculated set of leading spaces
+        -:  977:Function input/parameters: character data (char), 
+        -:  978:                           node height, working level (int),
+        -:  979:                           pointer to row start flag (bool *)
+        -:  980:Function output/parameters: updated row start flag (bool *)
+        -:  981:Function output/returned: none
+        -:  982:Device input/---: none
+        -:  983:Device output/---: character displayed as specified
+        -:  984:Dependencies: privateToPower, displayChars, printf
+        -:  985:*/
+    #####:  986:void displayValue( char data, int nodeHeight, 
+        -:  987:                                          int workingLevel, bool *rowStartFlag )
+        -:  988:   {
+        -:  989:    int leadingSpaces;
+        -:  990:  
+    #####:  991:    if( *rowStartFlag )
+        -:  992:       {
+    #####:  993:        leadingSpaces = privateToPower( 2, nodeHeight - workingLevel );
+        -:  994:
+    #####:  995:        *rowStartFlag = false;
+    #####:  996:       }
+        -:  997:  
+        -:  998:    else
+        -:  999:       {
+    #####: 1000:        leadingSpaces = privateToPower( 2, nodeHeight - workingLevel + 1 ) - 1;
+        -: 1001:       }
+        -: 1002:
+    #####: 1003:    privateDisplayChars( leadingSpaces, SPACE );
+        -: 1004:  
+    #####: 1005:    printf( "%c", data );         
+    #####: 1006:   }
+        -: 1007:

@@ -1,0 +1,21 @@
+insert Stanford Stanford_City 1
+insert AlexanderUniv flagstaff 70
+insert jatzuniv thGhetto 100
+insert MIT Cambridge 2
+insert goob goobVille 15
+CLR
+insert Ronald McDonald 20
+insert by? idk 45
+DPOST
+insert sadness myBrain 10
+insert goofyGooberUniv bikiniBottom 14
+insert sponchBob pineapple 3
+search MIT
+DIO
+VALH
+CNT
+insert palbud kentucky 22
+insert radBoi ohio 18
+CNT
+VALH
+CLR

@@ -1,0 +1,172 @@
+        -:    0:Source:test_avl_tree.cpp
+        -:    0:Graph:test_avl_tree.gcno
+        -:    0:Data:test_avl_tree.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <deepstate/DeepState.hpp>
+        -:    2:#include "AVL_Tree_Utility.h"
+        -:    3:
+        -:    4:using namespace deepstate;
+        -:    5:
+        -:    6:// Helper to populate the tree with random data
+        6:    7:AvlTreeNodeType* populateTreeRandom(int numNodes) {
+        6:    8:    AvlTreeNodeType* root = initializeTree();
+       21:    9:    for (int i = 0; i < numNodes; i++) {
+       15:   10:        int rank = DeepState_IntInRange(1, 100);  // Random rank
+        -:   11:        char name[STD_STR_LEN];
+        -:   12:        char city[MIN_STR_LEN];
+        -:   13:
+        -:   14:        // Generate random strings for name and city
+       15:   15:        snprintf(name, STD_STR_LEN, "University_%d", rank);
+       15:   16:        snprintf(city, MIN_STR_LEN, "City_%d", rank);
+        -:   17:
+       15:   18:        root = insertRawData(root, name, city, rank);
+       15:   19:    }
+        6:   20:    return root;
+        -:   21:}
+        -:   22:
+        -:   23:// Test case: Verify tree balance after random insertions
+       35:   24:TEST(AVLTree, InsertAndBalance) {
+        1:   25:    int numNodes = DeepState_IntInRange(1, 50);  // Number of nodes to insert
+        1:   26:    AvlTreeNodeType* root = populateTreeRandom(numNodes);
+        -:   27:
+        1:   28:    ASSERT(isBalanced(root)) << "Tree is not balanced after insertions!";
+        1:   29:    clearTree(root);
+        1:   30:}
+        -:   31:
+        -:   32:// Test case: Verify BST property using in-order traversal
+       35:   33:TEST(AVLTree, BSTProperty) {
+        1:   34:    int numNodes = DeepState_IntInRange(1, 50);
+        1:   35:    AvlTreeNodeType* root = populateTreeRandom(numNodes);
+        -:   36:
+        -:   37:    // Traverse tree in-order and check for sorted order
+        1:   38:    char lastName[STD_STR_LEN] = "";
+        1:   39:    int displayCount = 1;
+        1:   40:    displayInOrder(root, &displayCount);
+        -:   41:
+        -:   42:    // Ensure balance and free memory
+        1:   43:    ASSERT(isBalanced(root)) << "Tree is not balanced!";
+        1:   44:    clearTree(root);
+        1:   45:}
+        -:   46:
+        -:   47:// Test case: Search for all inserted nodes
+       35:   48:TEST(AVLTree, SearchInsertedNodes) {
+        1:   49:    int numNodes = DeepState_IntInRange(1, 50);
+        1:   50:    AvlTreeNodeType* root = populateTreeRandom(numNodes);
+        -:   51:
+        2:   52:    for (int i = 0; i < numNodes; i++) {
+        1:   53:        int rank = DeepState_IntInRange(1, 100);  // Generate random rank
+        -:   54:        char name[STD_STR_LEN];
+        1:   55:        snprintf(name, STD_STR_LEN, "University_%d", rank);
+        -:   56:
+        1:   57:        AvlTreeNodeType* result = search(root, name);
+        1:   58:        ASSERT(result != NULL) << "Inserted node " << name << " not found!";
+        1:   59:    }
+        -:   60:
+        -:   61:    // Test non-existent key
+        1:   62:    char nonExistent[STD_STR_LEN] = "University_999";
+        1:   63:    ASSERT(search(root, nonExistent) == NULL)
+        1:   64:        << "Non-existent key was incorrectly found!";
+        -:   65:
+        1:   66:    clearTree(root);
+        1:   67:}
+        -:   68:
+        -:   69:// Test case: Validate tree rotations
+       35:   70:TEST(AVLTree, RotationValidation) {
+        1:   71:    AvlTreeNodeType* root = initializeTree();
+        -:   72:
+        -:   73:    // Insert values that cause specific rotations
+        1:   74:    root = insertRawData(root, "University_30", "City_A", 30);
+        1:   75:    root = insertRawData(root, "University_20", "City_B", 20);
+        1:   76:    root = insertRawData(root, "University_10", "City_C", 10);  // Triggers rotation
+        -:   77:
+        1:   78:    ASSERT(isBalanced(root)) << "Tree is not balanced after left rotation!";
+        -:   79:
+        1:   80:    root = insertRawData(root, "University_40", "City_D", 40);
+        1:   81:    root = insertRawData(root, "University_50", "City_E", 50);  // Triggers rotation
+        -:   82:
+        1:   83:    ASSERT(isBalanced(root)) << "Tree is not balanced after right rotation!";
+        -:   84:
+        1:   85:    clearTree(root);
+        1:   86:}
+        -:   87:
+        -:   88:
+       35:   89:TEST(AVLTree, DisplayInOrderValidation) {
+        1:   90:    int numNodes = DeepState_IntInRange(1, 50);
+        1:   91:    AvlTreeNodeType* root = populateTreeRandom(numNodes);
+        -:   92:
+        -:   93:    char buffer[1000];  // Buffer to capture display output
+        1:   94:    int displayCount = 1;
+        -:   95:
+        -:   96:    // Redirect stdout to capture display output
+        1:   97:    freopen("/dev/null", "a", stdout);
+        1:   98:    setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
+        -:   99:
+        -:  100:    // Call displayInOrder
+        1:  101:    displayInOrder(root, &displayCount);
+        -:  102:
+        -:  103:    // Restore stdout and validate
+        1:  104:    freopen("/dev/tty", "a", stdout);
+        3:  105:    ASSERT_EQ(displayCount - 1, numNodes) << "Node count does not match!";
+        1:  106:    ASSERT(isBalanced(root)) << "Tree is not balanced!";
+        -:  107:
+        1:  108:    clearTree(root);
+        1:  109:}
+        -:  110:
+        -:  111:
+       35:  112:TEST(AVLTree, HeightValidation) {
+        1:  113:    int numNodes = DeepState_IntInRange(1, 50);
+        1:  114:    AvlTreeNodeType* root = populateTreeRandom(numNodes);
+        -:  115:
+        1:  116:    int nodeCount = countNodes(root);
+        1:  117:    bool heightValid = isHeightValid(root, nodeCount);
+        -:  118:
+        1:  119:    ASSERT(heightValid) << "Tree height is not valid for " << nodeCount << " nodes!";
+        1:  120:    clearTree(root);
+        1:  121:}
+        -:  122:
+        -:  123:
+       35:  124:TEST(AVLTree, EmptyTree) {
+        1:  125:    AvlTreeNodeType* root = initializeTree();
+        -:  126:
+        1:  127:    ASSERT(isBalanced(root)) << "Empty tree is not balanced!";
+        3:  128:    ASSERT_EQ(countNodes(root), 0) << "Empty tree has non-zero node count!";
+        1:  129:    ASSERT(isHeightValid(root, 0)) << "Height check failed for empty tree!";
+        1:  130:    clearTree(root);
+        1:  131:}
+        -:  132:
+        -:  133:
+       35:  134:TEST(AVLTree, SingleNode) {
+        1:  135:    AvlTreeNodeType* root = insertRawData(NULL, "University_1", "City_1", 1);
+        -:  136:
+        1:  137:    ASSERT(isBalanced(root)) << "Single node tree is not balanced!";
+        3:  138:    ASSERT_EQ(countNodes(root), 1) << "Single node tree has incorrect count!";
+        1:  139:    ASSERT(isHeightValid(root, 1)) << "Height check failed for single node tree!";
+        1:  140:    clearTree(root);
+        1:  141:}
+        -:  142:
+        -:  143:
+       35:  144:TEST(AVLTree, DuplicateInsertions) {
+        1:  145:    AvlTreeNodeType* root = initializeTree();
+        -:  146:
+        1:  147:    root = insertRawData(root, "University_1", "City_1", 1);
+        1:  148:    root = insertRawData(root, "University_1", "City_1", 1);  // Duplicate
+        -:  149:
+        1:  150:    ASSERT(isBalanced(root)) << "Tree is not balanced after duplicate insert!";
+        3:  151:    ASSERT_EQ(countNodes(root), 1) << "Duplicate insertion increased node count!";
+        1:  152:    clearTree(root);
+        1:  153:}
+        -:  154:
+        -:  155:
+       35:  156:TEST(AVLTree, DisplayPreOrderRandom) {
+        1:  157:    int numNodes = DeepState_IntInRange(10, 100);
+        1:  158:    AvlTreeNodeType* root = populateTreeRandom(numNodes);
+        -:  159:
+        1:  160:    int displayCount = 1;
+        1:  161:    displayPreOrder(root, &displayCount);
+        -:  162:
+        4:  163:    ASSERT_EQ(displayCount - 1, numNodes) << "Pre-order display missed nodes!";
+        1:  164:    clearTree(root);
+        1:  165:}
+        -:  166:
+        -:  167:

@@ -1,4 +1,5 @@
 #include "AVL_Tree_Utility.h"
+#include <math.h>
 
 
 //Anthony A. Narvaez
@@ -81,7 +82,7 @@ AvlTreeNodeType *createNodeFromData( const char *univName,
                                            const char *univCity, int univRank )
    {
     //declare the new node, allocate memory for it
-    AvlTreeNodeType *newNode = malloc( sizeof( AvlTreeNodeType ) );
+    AvlTreeNodeType *newNode = (AvlTreeNodeType*)malloc( sizeof( AvlTreeNodeType ) );
 
     //copy data over to new node
     privateCopyString( newNode->name, univName );
@@ -338,92 +339,6 @@ int findTreeHeight( AvlTreeNodeType *wkgPtr )
     return -1;
    }
 
-/*
-Name: getDataFromFile
-Process: uploads data from file with unknown number of data sets,
-         has internal Boolean to display data input success
-Function input/parameters: file name (const char *)
-Function output/parameters: none
-Function output/returned: pointer to BST holding data (AvlTreeNodeType *)
-Device input/---: data from HD
-Device output/monitor: if internal Boolean set, displays uploaded values
-Dependencies: openInputFile, readStringToLineEndFromFile, 
-              checkForEndOfInputFile, readIntegerFromFile,
-              readStringToDelimiterFromFile, readCharacterFromFile, 
-              insertRawData, printf, closeInputFile
-*/
-AvlTreeNodeType *getDataFromFile( const char *fileName )
-   {
-    //declare the first (root) node pointer
-    AvlTreeNodeType *rootNode = NULL;
-
-    //declare the boolean flag and counter for it
-    bool dispFlag = true;
-    int counter = 1;
-    
-    if( openInputFile( fileName ) )
-       {
-        //declare a string buffer for first line
-        char buffer[ MAX_STR_LEN ];
-
-        //declare variables to hold data from the file
-        char inName[ STD_STR_LEN ];
-        char inCity[ STD_STR_LEN ];
-        int inRank;
-
-        //read first line to skip csv description
-        readStringToLineEndFromFile( buffer );
-
-        //print first title and debug message (boolean flag)
-        if( dispFlag )
-           {
-            printf( "\nBegin Loading Data From File . . .\n" );
-           }
-
-        //get first integer to prime the loop (read priming)
-        inRank = readIntegerFromFile();
-
-        while( !checkForEndOfInputFile() )
-           {
-            //read the comma
-            readCharacterFromFile();
-
-            //read in the name
-            readStringToDelimiterFromFile( COMMA, inName );
-
-            //read in the city
-            readStringToLineEndFromFile( inCity );
-
-            
-
-            //insert the data into the BST
-            rootNode = insertRawData(rootNode, inName, inCity, inRank);
-
-            //test for flag and print if true
-            if( dispFlag )
-               {
-                printf( "%5d) Name: %s, City: %s, Rank: %d\n", counter, inName, 
-                                                               inCity, inRank );
-                counter = counter + 1;
-               }
-
-            //reprime the loop
-            inRank = readIntegerFromFile();
-           }
-       }
-    //print last loading debug message
-    if( dispFlag )
-       {
-        printf( 
-    "                                  . . . End Loading Data From File\n\n" );
-       }
-
-    //print debug message
-    closeInputFile();
-
-    return rootNode;
-   }
-   
 
 /*
 Name: initializeTree
@@ -753,191 +668,57 @@ void universityDataToString( char *destStr,
    }
 
 
-////////////////////////////////////////////////////////////////////////////////
-// No student coding below this point
-////////////////////////////////////////////////////////////////////////////////
 
-/*
-Name: displayAtTreeLevel
-Process: displays one horizontal "level" of a tree using text graphics
-         with appropriate spacing and appropriate number of nodes
-Function input/parameters: recursive working node (AvlTreeNodeType *),
-                           node height, display level, working level (int),
-                           row start flag (bool)
-Function output/parameters: none
-Function output/returned: updated row start flag (bool *)
-Device input/---: none
-Device output/---: none
-Dependencies: displayValue, displayEmptyNodeSpaces
-*/
-void displayAtTreeLevel( AvlTreeNodeType *workingNode, int nodeHeight, 
-                                  int displayLevel, int workingLevel, 
-                                                            bool *rowStartFlag )
-   {
-    char charOut = workingNode->name[ 0 ];
-  
-    if( workingLevel == displayLevel )
-       {
-        displayValue( charOut, nodeHeight, workingLevel, rowStartFlag );
-       }
-  
-    else
-       {
-        if( workingNode->leftChildPtr != NULL )
-           {
-            displayAtTreeLevel( workingNode->leftChildPtr, nodeHeight,
-                                 displayLevel, workingLevel + 1, rowStartFlag );
-           }
-  
-        else
-           {
-            displayEmptyNodeSpaces( nodeHeight, displayLevel, 
-                                               workingLevel + 1, rowStartFlag );
-           }
-      
-        if( workingNode->rightChildPtr != NULL )
-           {
-            displayAtTreeLevel( workingNode->rightChildPtr, nodeHeight,
-                                 displayLevel, workingLevel + 1, rowStartFlag );
-           }
 
-        else
-           {
-            displayEmptyNodeSpaces( nodeHeight, displayLevel, 
-                                               workingLevel + 1, rowStartFlag );
-           }              
-       }
-   }
 
-/*
-Name: displayDivider
-Process: displays divider of correct length for tree
-         using either THICK_DIVIDER or THIN_DIVIDER 
-         depending on the control code,
-         adds one endline to thick divider, two to thin for spacing
-Function input/parameters: number of characters (int), 
-                           character to be displayed (char)
-Function output/parameters: none
-Function output/returned: none
-Device input/---: none
-Device output/---: characters displayed as specified
-Dependencies: printf
-*/
-void displayDivider( AvlTreeNodeType *rootPtr, char dividerChar )
-   {
-    int treeHeight = findTreeHeight( rootPtr );
-    int numChars = privateToPower( 2, treeHeight + 2 );
 
-    privateDisplayChars( numChars, dividerChar );
 
-    if( dividerChar == THIN_DIVIDER )
-       {
-        printf( "\n" );
-       }
+// TESTING FUNCTION : isBalanced
 
-    printf( "\n" );
-   }
+// Recursive function to check if the tree is balanced
+bool isBalanced(AvlTreeNodeType* node) {
+    if (node == NULL) {
+        return true;  // Base case: an empty tree is balanced
+    }
 
-/*
-Name: displayEmptyNodeSpaces
-Process: displays the appropriate number of dashes for a given level
-         for null nodes, can display either dashes or 'B's
-Function input/parameters: node height, display level, working level (int)
-                           pointer to row start flag (bool *)
-Function output/parameters: none
-Function output/returned: updated row start flag (bool *)
-Device input/---: none
-Device output/---: characters displayed as specified
-Dependencies: privateToPower, displayValue
-*/
-void displayEmptyNodeSpaces( int nodeHeight, 
-                        int displayLevel, int workingLevel, bool *rowStartFlag )
-   {
-    int nodesToDisplay = privateToPower( 2, displayLevel - workingLevel ); 
-    char charOut = SPACE;
-  
-    if( displayLevel == workingLevel )
-       {
-        charOut = DASH;
-       }
-  
-    while( nodesToDisplay > 0 )
-       {
-        displayValue( charOut, nodeHeight, displayLevel, rowStartFlag );
-      
-        nodesToDisplay--;
-       }
-   }
+    // Calculate heights of left and right subtrees
+    int leftHeight = findTreeHeight(node->leftChildPtr);
+    int rightHeight = findTreeHeight(node->rightChildPtr);
 
-/*
-Name: displayTreeStructure
-Process: repeatedly calls other function to display 
-         the structure of an RB tree, can display either dashes or 'B's,
-         displays error message if empty tree
-Function input/parameters: tree root pointer (AvlTreeNodeType *)
-Function output/parameters: none
-Function output/returned: none
-Device input/---: none
-Device output/---: characters displayed as specified
-Dependencies: findTreeHeight, displayAtTreeLevel, printf
-*/
-void displayTreeStructure( AvlTreeNodeType *avlTreeRoot )
-   {
-    int displayLevel, nodeHeight = findTreeHeight( avlTreeRoot ) + 2;
-    int workingLevel = 1;
-    bool rowStartFlag;
+    // Calculate balance factor
+    int balanceFactor = leftHeight - rightHeight;
 
-    if( avlTreeRoot != NULL )
-       {
-        for( displayLevel = 1; displayLevel <= nodeHeight; displayLevel++ )
-           {
-            rowStartFlag = true;
-          
-            displayAtTreeLevel( avlTreeRoot, nodeHeight, 
-                                    displayLevel, workingLevel, &rowStartFlag );
-          
-            printf( "\n" );
-           }
-       }
-  
-    else
-       {
-        printf( "\nEmpty Tree - No Display" );
-       }
-   }
+    // Check if the balance factor is within the allowed range
+    if (balanceFactor < -1 || balanceFactor > 1) {
+        return false;  // Tree is not balanced
+    }
 
-/*
-Name: displayValue
-Process: displays a tree character value or color letter (R/B)
-         after a calculated set of leading spaces
-Function input/parameters: character data (char), 
-                           node height, working level (int),
-                           pointer to row start flag (bool *)
-Function output/parameters: updated row start flag (bool *)
-Function output/returned: none
-Device input/---: none
-Device output/---: character displayed as specified
-Dependencies: privateToPower, displayChars, printf
-*/
-void displayValue( char data, int nodeHeight, 
-                                          int workingLevel, bool *rowStartFlag )
-   {
-    int leadingSpaces;
-  
-    if( *rowStartFlag )
-       {
-        leadingSpaces = privateToPower( 2, nodeHeight - workingLevel );
+    // Recursively check if left and right subtrees are balanced
+    return isBalanced(node->leftChildPtr) && isBalanced(node->rightChildPtr);
+}
 
-        *rowStartFlag = false;
-       }
-  
-    else
-       {
-        leadingSpaces = privateToPower( 2, nodeHeight - workingLevel + 1 ) - 1;
-       }
 
-    privateDisplayChars( leadingSpaces, SPACE );
-  
-    printf( "%c", data );         
-   }
+bool containsKey(AvlTreeNodeType* node, const char *name) {
+    if (node == NULL) {
+        return false;
+    }
+    if (privateCompareStrings(node->name, name) == 0) {
+        return true;
+    }
+    return containsKey(node->leftChildPtr, name) || containsKey(node->rightChildPtr, name);
+}
 
+
+
+bool isHeightValid(AvlTreeNodeType* root, int nodeCount) {
+    int height = findTreeHeight(root);
+    int maxHeight = (int)(1.44 * log2(nodeCount + 2) - 1);
+    return height <= maxHeight;
+}
+
+int countNodes(AvlTreeNodeType* node) {
+    if (node == NULL) {
+        return 0;  // Base case: no nodes in an empty tree
+    }
+    return 1 + countNodes(node->leftChildPtr) + countNodes(node->rightChildPtr);
+}
